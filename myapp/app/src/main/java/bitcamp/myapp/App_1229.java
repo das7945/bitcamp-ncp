@@ -8,27 +8,18 @@ public class App {
     // 키보드에서 입력을 받는 도구 준비
     Scanner keyScanner = new Scanner(System.in);
 
-    System.out.print("번호: ");
+
     int no = Integer.parseInt(keyScanner.nextLine());
     //    int no = 1;
-    System.out.print("이름: ");
-    String name = keyScanner.nextLine();
-    System.out.print("전화번호: ");
-    String tel = keyScanner.nextLine();
-    System.out.print("우편번호: ");
-    String postNo = keyScanner.nextLine();
-    System.out.print("주소: ");
-    String basicAddress = keyScanner.nextLine();
-    System.out.print("상세주소: ");
-    String detailAddress = keyScanner.nextLine();
-    System.out.print("재직자?(true/false): ");
-    boolean working = Boolean.parseBoolean(keyScanner.nextLine());
-    System.out.print("성별?(남자: M, 여자: W): ");
-    char gender = keyScanner.nextLine().charAt(0); // M(남자), W(여자)
-    System.out.print("전공자?(0: 비전공자), (1: 준정공자), (2: 전공자): ");
-    byte level = Byte.parseByte(keyScanner.nextLine()); // 0(비전공자), 1(준정공자), 2(전공자)
-    System.out.print("가입일: ");
-    String createDate = keyScanner.nextLine();
+    String name = "홍길동";
+    String tel = "010-1111-1111";
+    String postNo = "06656";
+    String basicAddress = "서울시 서초구 반포대로23길";
+    String detailAddress = "101동 201호";
+    boolean working = false;
+    char gender = 'M'; // M(남자), W(여자)
+    byte level = 0; // 0(비전공자), 1(준정공자), 2(전공자)
+    String createDate = "2022-12-29";
 
     System.out.println("번호: " + no);
     System.out.println("이름: " + name);
