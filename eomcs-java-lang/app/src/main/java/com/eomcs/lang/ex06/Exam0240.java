@@ -5,7 +5,7 @@ package com.eomcs.lang.ex06;
 public class Exam0240 {
 
   public static void main(String[] args) {
-    int level = 1;
+    int level = 2;
 
     // 상수를 사용하지 않았을 때
     // => 값의 의미를 주석으로 달아야만 다른 개발자가 이해할 수 있다.

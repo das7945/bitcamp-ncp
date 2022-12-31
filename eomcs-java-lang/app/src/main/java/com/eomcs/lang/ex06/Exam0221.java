@@ -20,7 +20,7 @@ public class Exam0221 {
         System.out.println("정보처리자격증");
         System.out.println("졸업증명서");
         System.out.println("이력서");
-        break; // 여기까지만 실행한다.
+        // 여기까지만 실행한다.
       case 2:
         System.out.println("졸업증명서");
         System.out.println("이력서");
