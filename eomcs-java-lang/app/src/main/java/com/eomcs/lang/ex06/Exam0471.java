@@ -19,7 +19,7 @@ public class Exam0471 {
     // 제네릭을 사용하면 for(:) 문장에서
     // 항목의 타입을 정확하게 지정하여 값을 받을 수 있다.
     for (String name : list) {
-      System.out.print(name + " ");
+      System.out.print(name + "   ");
     }
   }
 }

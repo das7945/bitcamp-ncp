@@ -22,5 +22,3 @@ public class Exam0520 {
     System.out.println("종료!");
   }
 }
-
-
