@@ -50,8 +50,28 @@ public class Exam0210 {
     System.out.printf("%s: %d, %d, %d, %d, %.1f\n", s1.name, s1.kor, s1.eng, s1.math, s1.sum, s1.aver);
     System.out.printf("%s: %d, %d, %d, %d, %.1f\n", s2.name, s2.kor, s2.eng, s2.math, s2.sum, s2.aver);
     System.out.printf("%s: %d, %d, %d, %d, %.1f\n", s3.name, s3.kor, s3.eng, s3.math, s3.sum, s3.aver);
+
+    //    Score bs1, bs2, bs3, bs4, bs5, bs6, bs7, bs8, bs9, bs10, bs11, bs12, bs13, bs14, bs15, bs16,
+    //          bs17, bs18, bs19, bs20, bs21, bs22, bs23, bs24, bs25, bs26, bs27, bs28;
+
+    Score[] scores = new Score[1000];
+    // 예를 들어 학교에서 학생들의 개개인 점수를 기록하기 위해
+    // 종이만 1000장 준비한 상태(종이에 페이지번호만 적혀있음 0번부터 시작)
+
+    // 반복문사용을 안 할 시에는 노가다 작업으로 한명한명 다 준비를 해야함.
+    // Socore[x] <= x자리의 의미는 종이의 페이지 번호 0번부터 시작.)
+    Score[0] = new Score();
+    Score[1] = new Score();
+    Score[2] = new Score();
+    Score[3] = new Score();
+    Score[4] = new Score();
+
+
   }
+
 }
+
+
 
 // 수 십 개의 인스턴스를 저장한다면
 // 레퍼런스도 그 개수에 맞춰 선언해야 한다.
