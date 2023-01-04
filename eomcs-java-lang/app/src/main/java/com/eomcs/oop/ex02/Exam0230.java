@@ -48,13 +48,13 @@ public class Exam0230 {
     // Calculator 내부에서 계산 결과를 관리한다.
     // int result = 0;
 
-    Calculator.plus(2);
-    Calculator.plus(3);
-    Calculator.minus(1);
-    Calculator.multiple(7);
-    Calculator.divide(3);
 
+    Calculator.plus(2);
     System.out.printf("result = %d\n", Calculator.result);
+    Calculator.plus(3);
+    System.out.printf("result = %d\n", Calculator.result);
+
+
   }
 }
 
