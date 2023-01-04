@@ -60,11 +60,11 @@ public class Exam0210 {
 
     // 반복문사용을 안 할 시에는 노가다 작업으로 한명한명 다 준비를 해야함.
     // Socore[x] <= x자리의 의미는 종이의 페이지 번호 0번부터 시작.)
-    Score[0] = new Score();
-    Score[1] = new Score();
-    Score[2] = new Score();
-    Score[3] = new Score();
-    Score[4] = new Score();
+    Score1[0] = new Score();
+    Score1[1] = new Score();
+    Score1[2] = new Score();
+    Score1[3] = new Score();
+    Score1[4] = new Score();
 
 
   }
