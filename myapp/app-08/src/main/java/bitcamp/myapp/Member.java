@@ -13,3 +13,4 @@ public class Member {
   byte level;
   String createdDate;
 }
+
