@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>myapp-myapp</name>
+	<name>myapp</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -10,19 +10,13 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1672655958855</id>
+			<id>1672907079579</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
