@@ -14,4 +14,3 @@ public class Member {
   String createdDate;
 }
 
-}
