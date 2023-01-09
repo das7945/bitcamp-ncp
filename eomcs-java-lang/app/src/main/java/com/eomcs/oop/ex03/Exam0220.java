@@ -5,10 +5,10 @@ public class Exam0220 {
 
   static class A {
 
-    int value;
+    int value; // 인스턴스필드 = 논스태틱필드
 
     static void m1() {
-      // 클래스 메서드는 인스턴스 주소 없이 호출되기 때문에 
+      // 클래스 메서드는 인스턴스 주소 없이 호출되기 때문에
       // 인스턴스 주소를 받는 내장 변수가 없다.
       //      this.value = 100; // 컴파일 오류!
     }
@@ -26,7 +26,7 @@ public class Exam0220 {
     }
 
     void m4(int value) {
-      // 로컬 변수의 이름이 인스턴스 이름과 같을 경우 
+      // 로컬 변수의 이름이 인스턴스 이름과 같을 경우
       // this를 붙이지 않으면 로컬 변수를 가리킨다.
       value = 200; // 로컬 변수이다.
 
@@ -34,6 +34,9 @@ public class Exam0220 {
       // 따라서 로컬 변수가 아닌 인스턴스 변수를 가리키고 싶으면 this를 붙여야 한다.
     }
   }
+
+
+
   public static void main(String[] args) {
     // 클래스 메서드는 인스턴스 주소 없이 클래스 이름으로 호출한다.
     // 그래서 클래스 메서드는 this라는 내장 변수가 없는 것이다.

@@ -15,13 +15,13 @@ public class Exam0112 {
         (byte)0xb6, (byte)0xca, // 똘 (EUC-KR 코드)
         (byte)0xb6, (byte)0xcb  // 똥 (EUC-KR 코드)
     };
-    String s1 = new String(bytes); 
+    String s1 = new String(bytes);
     // 바이트 배열에 들어 있는 문자 코드가 어떤 문자집합에 맞춰 작성되었는지 알려주지 않으면
     // String 클래스는 JVM이 가정하는 문자집합으로 작성되었을 거라고 생각하고 Unicode로 변환한다.
 
     System.out.println(s1);
     System.out.println("----------------------------");
-    // 결과: 
+    // 결과:
     // => 한글 출력이 깨진다.
     //
     // 이유?
@@ -41,24 +41,8 @@ public class Exam0112 {
     //    바이트 배열과 인코딩 정보를 함께 받는 생성자를 사용하라!
     // => 즉 bytes 배열에 EUC-KR의 코드 값이 들어 있다고 알려준다.
     //    그러면 JVM은 바이트 배열에 들어 있는 값을 제대로 유니코드 바꿀 것이다.
-    // 
+    //
     String s2 = new String(bytes, "EUC-KR");
     System.out.println(s2);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
