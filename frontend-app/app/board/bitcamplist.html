@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>비트캠프</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>분류</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><a href="generalform.html">일반학생관리</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><a href="supportedform.html">국비지원학생관리</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><a href="companyform.html">위탁교육생관리</a></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><a href="form.html">게시판</a></td>
+      </tr>
+    </thead>
+  </table>
+
+  <style>
+    tr,
+    td,
+    th {
+      padding: 5px 15px;
+      text-align: center;
+    }
+  </style>
+
+  <!-- <script>
+    // var tbody = document.querySelector("tbody");
+    fetch('http://localhost:8080/boards')
+      .then((response) => { return response.json(); })
+      .then((obj) => {
+        var html = '';
+        for (var b of obj.data) {
+          html += `<tr>
+        <td>${b.no}</td>
+        <td><a href="view.html?no=${b.no}">${b.title} </a></td>
+        <td>${b.createdDate}</td>
+        <td>${b.viewCount}</td>
+        </tr>\n`;
+        }
+        tbody.innerHTML = html;
+      })
+      .catch((err) => {
+        alert("서버 요청 오류!");
+        console.log(err);
+      });  
+  </script> -->
+</body>
+
+</html>
