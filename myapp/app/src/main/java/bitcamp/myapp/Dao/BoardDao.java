@@ -1,4 +1,4 @@
-package bitcamp.myapp.Dao;
+package bitcamp.myapp.dao;
 
 import java.util.Arrays;
 import bitcamp.myapp.vo.Board;
@@ -15,17 +15,17 @@ public class BoardDao {
 
   public Board[] findAll() {
     // 배열의 값 복제
-    //        Board[] arr = new Board[this.count];
-    //        for (int i = 0; i < this.count; i++) {
-    //          arr[i] = this.boards[i];
-    //        }
-    //        return arr;
+    //    Board[] arr = new Board[this.count];
+    //    for (int i = 0; i < this.count; i++) {
+    //      arr[i] = this.boards[i];
+    //    }
+    //    return arr;
 
     // 위와 같다!
     return Arrays.copyOf(boards, count);
   }
 
-  public Board findByNo(int no) { // no <= 게시글 번호
+  public Board findByNo(int no) {
     for (int i = 0; i < this.count; i++) {
       if (this.boards[i].getNo() == no) {
         return this.boards[i];
@@ -34,7 +34,7 @@ public class BoardDao {
     return null;
   }
 
-  public void update(Board board) { //
+  public void update(Board board) {
     this.boards[this.indexOf(board)] = board;
   }
 

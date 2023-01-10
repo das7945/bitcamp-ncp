@@ -1,16 +1,16 @@
 package bitcamp.myapp.handler;
 
 import java.sql.Date;
-import bitcamp.myapp.Prompt;
-import bitcamp.myapp.Dao.MemberDao;
+import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
+import bitcamp.util.Prompt;
 
 public class MemberHandler {
 
   private MemberDao memberDao = new MemberDao();
   private String title;
 
-  MemberHandler(String title) {
+  public MemberHandler(String title) {
     this.title = title;
   }
 
@@ -67,7 +67,7 @@ public class MemberHandler {
 
   // 인스턴스 멤버(필드나 메서드)를 사용하지 않기 때문에
   // 그냥 스태틱 메서드로 두어라!
-  static String getLevelText(int level) {
+  private static String getLevelText(int level) {
     switch (level) {
       case 0: return "비전공자";
       case 1: return "준전공자";
