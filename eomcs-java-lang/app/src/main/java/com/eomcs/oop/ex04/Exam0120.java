@@ -21,5 +21,7 @@ public class Exam0120 {
     // 날짜 인스턴스(객체=메모리) 초기화시킨다.
     Date d3 = new Date(1000L * 60 * 60 * 24 * 365 * 50);
     System.out.println(d3);
+
+    Date d4 = new Date()
   }
 }

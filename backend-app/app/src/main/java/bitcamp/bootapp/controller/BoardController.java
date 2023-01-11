@@ -35,7 +35,7 @@ public class BoardController {
     this.boardDao.insert(b);
 
     // 응답 결과를 담을 맵 객체 준비
-    Map<String, Object> contentMap = new HashMap<>();
+    Map<String,Object> contentMap = new HashMap<>();
     contentMap.put("status", "success");
 
     return contentMap;
@@ -85,7 +85,7 @@ public class BoardController {
     Board old = this.boardDao.findByNo(boardNo);
     if (old == null || !old.getPassword().equals(password)) {
       contentMap.put("status", "failure");
-      contentMap.put("data", "게시글이 없거나 암호가 틀렸습니다.");
+      contentMap.put("data", "게시글이 없거나 암호가 맞지 않습니다.");
       return contentMap;
     }
 
@@ -107,16 +107,17 @@ public class BoardController {
   @DeleteMapping("/boards/{boardNo}")
   public Object deleteBoard(
       @PathVariable int boardNo,
-      @RequestParam String password) {
+      @RequestParam(required = false) String password) {
 
     Board b = this.boardDao.findByNo(boardNo);
 
     // 응답 결과를 담을 맵 객체 준비
     Map<String,Object> contentMap = new HashMap<>();
 
-    if (b == null || b.getPassword().equals(password)) {
+    if (b == null || !b.getPassword().equals(password)) {
       contentMap.put("status", "failure");
-      contentMap.put("data", "해당 번호의 게시글이 없습니다.");
+      contentMap.put("data", "게시글이 없거나 암호가 맞지 않습니다.");
+
     } else {
       this.boardDao.delete(b);
       contentMap.put("status", "success");

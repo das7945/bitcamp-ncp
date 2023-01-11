@@ -17,14 +17,14 @@ public class Exam0210 {
     System.out.println("-------------------------");
 
     System.out.println(s1.contains("ll"));
-    System.out.println(s1.contains("ee"));
+    System.out.println(s1.contains("el"));
     System.out.println("-------------------------");
 
     // 두 문자열을 연결하여 새 문자열을 만들자!
     String s2 = s1.concat(", world!");
     System.out.println(s1); // 기존 인스턴스의 값은 변경하지 않는다.
     System.out.println(s2); // 새로 문자열을 만든다.
-
+    System.out.println("-------------------------");
     // 두 인스턴스에 들어 있는 문자열이 같은 지 비교할 때
     System.out.println(s1.equals("aaa")); // false
     System.out.println(s1.equals("Hello")); // true
