@@ -1,8 +1,10 @@
 package bitcamp.bootapp.dao;
 
 import java.util.Arrays;
+import org.springframework.stereotype.Repository;
 import bitcamp.bootapp.vo.Teacher;
 
+@Repository // DAO 역할을 수행하는 객체에 대해서 붙인다.
 public class TeacherDao {
   private static final int SIZE = 100;
 
@@ -10,9 +12,9 @@ public class TeacherDao {
   private int count;
   private Teacher[] teachers = new Teacher[SIZE];
 
-  public void insert(Teacher t) {
-    t.setNo(++no);
-    this.teachers[this.count++] = t;
+  public void insert(Teacher teacher) {
+    teacher.setNo(++no);
+    this.teachers[this.count++] = teacher;
   }
 
   public Teacher[] findAll() {
@@ -28,23 +30,30 @@ public class TeacherDao {
     return null;
   }
 
-  public void update(Teacher t) {
-    this.teachers[this.indexOf(t)] = t;
+  public void update(Teacher teacher) {
+    this.teachers[this.indexOf(teacher)] = teacher;
   }
 
-  public void delete(Teacher no) {
-    for (int i = this.indexOf(no); i < this.count; i++) {
-      this.teachers[i] = this.teachers[i + 1];
+  public void delete(Teacher teacher) {
+    for (int i = this.indexOf(teacher) + 1; i < this.count; i++) {
+      this.teachers[i - 1] = this.teachers[i];
     }
     this.teachers[--this.count] = null; // 레퍼런스 카운트를 줄인다.
   }
 
-  private int indexOf(Teacher t) {
+  private int indexOf(Teacher teacher) {
     for (int i = 0; i < this.count; i++) {
-      if (this.teachers[i].getNo() == t.getNo()) {
+      if (this.teachers[i].getNo() == teacher.getNo()) {
         return i;
       }
     }
     return -1;
   }
 }
+
+
+
+
+
+
+

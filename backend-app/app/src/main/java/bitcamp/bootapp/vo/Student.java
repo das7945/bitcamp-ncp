@@ -1,7 +1,7 @@
 package bitcamp.bootapp.vo;
 
 // 회원 데이터를 담을 메모리를 설계한다.
-public class Member {
+public class Student {
   private int no;
   private String name;
   private String tel;

@@ -5,10 +5,10 @@ public class Teacher {
   private String name;
   private String tel;
   private String email;
-  private String academicBackground; // 최종학력
-  private String university; //대학교
-  private String major; // 전공
-  private String pay; // 강사
+  private int degree;
+  private String school;
+  private String major;
+  private int wage;
   private String createdDate;
 
   public int getNo() {
@@ -35,17 +35,17 @@ public class Teacher {
   public void setEmail(String email) {
     this.email = email;
   }
-  public String getAcademicBackground() {
-    return academicBackground;
+  public int getDegree() {
+    return degree;
   }
-  public void setAcademicBackground(String academicBackground) {
-    this.academicBackground = academicBackground;
+  public void setDegree(int degree) {
+    this.degree = degree;
   }
-  public String getUniversity() {
-    return university;
+  public String getSchool() {
+    return school;
   }
-  public void setUniversity(String university) {
-    this.university = university;
+  public void setSchool(String school) {
+    this.school = school;
   }
   public String getMajor() {
     return major;
@@ -53,11 +53,11 @@ public class Teacher {
   public void setMajor(String major) {
     this.major = major;
   }
-  public String getPay() {
-    return pay;
+  public int getWage() {
+    return wage;
   }
-  public void setPay(String pay) {
-    this.pay = pay;
+  public void setWage(int wage) {
+    this.wage = wage;
   }
   public String getCreatedDate() {
     return createdDate;
@@ -65,5 +65,6 @@ public class Teacher {
   public void setCreatedDate(String createdDate) {
     this.createdDate = createdDate;
   }
+
 
 }
