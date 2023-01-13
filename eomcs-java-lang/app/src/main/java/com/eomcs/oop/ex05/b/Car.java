@@ -27,7 +27,6 @@ public class Car {
     // 이 클래스의 다른 생성자를 먼저 호출할 수 있다.
     // => 이때 this()를 사용한다.
     this(model, maker, capacity);
-
     this.sunroof = sunroof;
     this.auto = auto;
   }

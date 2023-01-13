@@ -17,8 +17,6 @@ public class Exam01 {
     //
     Car c1 = new Car("비트자동차", "티코", 5, true, true);
 
-
-
   }
 }
 

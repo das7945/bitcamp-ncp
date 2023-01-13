@@ -5,10 +5,11 @@ public class Exam02 {
 
   public static void main(String[] args) {
     m1(new Truck()); // OK!
-    //m1(new Sedan()); // Error
+    //    m1(new car()); // Error
 
     m2(new Truck());
     m2(new Sedan());
+
 
     //m2(new Car()); // Error
   }
