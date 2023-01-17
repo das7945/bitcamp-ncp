@@ -1,4 +1,4 @@
-package bitcamp.myapp.vo;
+package bitcamp.bootapp.vo;
 
 public class Member {
   private int no;

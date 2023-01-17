@@ -1,6 +1,5 @@
 package bitcamp.bootapp.controller;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,41 +14,16 @@ import bitcamp.bootapp.vo.Student;
 @RestController
 public class StudentController {
 
-  StudentDao memberDao;
+  StudentDao studentDao;
 
-  // Spring IoC 컨테이너가 이 클래스의 인스턴스를 만들기 위해
-  // 생성자를 호출할 때,
-  // 파라미터로 선언된 MemberDao 객체를 주입할 것이다.
-  public StudentController(StudentDao memberDao) {
-    this.memberDao = memberDao;
+  public StudentController(StudentDao studentDao) {
+    this.studentDao = studentDao;
   }
 
-  @PostMapping("/members")
-  public Object addMember(
-      //@RequestParam(required = false)
-      String name, // ..&name=xxx&..
-      String tel, // ..&tel=xxx&..
-      String postNo, // ..&postNo=xxx&..
-      String basicAddress, // ..&basicAddress=xxx&..
-      String detailAddress, // ..&detailAddress=xxx&..
-      boolean working, // ..&working=xxx&..  => "true"=true/"false"=false, 파라미터 없으면 false,
-      // "on"=true/"off"=false, "1"=true/"0"=false, 그 밖에 문자열은 변환 오류 발생!
-      char gender, // ..&gender=M&..  => 문자 1개의 문자열 변환, null 또는 그 밖에 문자열은 변환 오류 발생!
-      byte level // ..&level=1&..  => Byte.parseByte("1") => 1, null 또는 byte 범위를 초과하는 숫자는 변환 오류 발생!
-      ) {
+  @PostMapping("/students")
+  public Object addStudent(Student student) {
 
-    Student m = new Student();
-    m.setName(name);
-    m.setTel(tel);
-    m.setPostNo(postNo);
-    m.setBasicAddress(basicAddress);
-    m.setDetailAddress(detailAddress);
-    m.setWorking(working);
-    m.setGender(gender);
-    m.setLevel(level);
-    m.setCreatedDate(new Date(System.currentTimeMillis()).toString());
-
-    this.memberDao.insert(m);
+    this.studentDao.insert(student);
 
     Map<String,Object> contentMap = new HashMap<>();
     contentMap.put("status", "success");
@@ -58,23 +32,23 @@ public class StudentController {
   }
 
 
-  @GetMapping("/members")
-  public Object getMembers() {
+  @GetMapping("/students")
+  public Object getStudents() {
 
-    Student[] members = this.memberDao.findAll();
+    Student[] students = this.studentDao.findAll();
 
     Map<String,Object> contentMap = new HashMap<>();
     contentMap.put("status", "success");
-    contentMap.put("data", members);
+    contentMap.put("data", students);
 
     return contentMap;
   }
 
 
-  @GetMapping("/members/{memberNo}")
-  public Object getMember(@PathVariable int memberNo) {
+  @GetMapping("/students/{no}")
+  public Object getStudent(@PathVariable int no) {
 
-    Student b = this.memberDao.findByNo(memberNo);
+    Student b = this.studentDao.findByNo(no);
 
     Map<String,Object> contentMap = new HashMap<>();
 
@@ -89,35 +63,31 @@ public class StudentController {
     return contentMap;
   }
 
-  @PutMapping("/members/{no}")
-  public Object updateMember(
-      //@PathVariable int memberNo, // Member 인스턴스로 직접 받을 수 있다.
-      Student member) {
+  @PutMapping("/students/{no}")
+  public Object updateStudent(Student student) {
 
     Map<String,Object> contentMap = new HashMap<>();
 
-    Student old = this.memberDao.findByNo(member.getNo());
+    Student old = this.studentDao.findByNo(student.getNo());
     if (old == null) {
       contentMap.put("status", "failure");
       contentMap.put("data", "회원이 없습니다.");
       return contentMap;
     }
 
-    member.setCreatedDate(old.getCreatedDate());
+    student.setCreatedDate(old.getCreatedDate());
 
-    this.memberDao.update(member);
+    this.studentDao.update(student);
 
     contentMap.put("status", "success");
 
     return contentMap;
   }
 
-  @DeleteMapping("/members/{memberNo}")
-  public Object deleteMember(
-      // 낱개로 받을 때는 @PathVariable 애노테이션을 생략하면 안된다.
-      @PathVariable int memberNo) {
+  @DeleteMapping("/students/{no}")
+  public Object deleteStudent(@PathVariable int no) {
 
-    Student m = this.memberDao.findByNo(memberNo);
+    Student m = this.studentDao.findByNo(no);
 
     Map<String,Object> contentMap = new HashMap<>();
 
@@ -126,7 +96,7 @@ public class StudentController {
       contentMap.put("data", "회원이 없습니다.");
 
     } else {
-      this.memberDao.delete(m);
+      this.studentDao.delete(m);
       contentMap.put("status", "success");
     }
 

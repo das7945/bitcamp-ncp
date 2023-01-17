@@ -1,5 +1,6 @@
 package bitcamp.bootapp.dao;
 
+import java.sql.Date;
 import java.util.Arrays;
 import org.springframework.stereotype.Repository;
 import bitcamp.bootapp.vo.Student;
@@ -10,40 +11,41 @@ public class StudentDao {
 
   private int no;
   private int count;
-  private Student[] members = new Student[SIZE];
+  private Student[] students = new Student[SIZE];
 
-  public void insert(Student member) {
-    member.setNo(++no);
-    this.members[this.count++] = member;
+  public void insert(Student student) {
+    student.setNo(++no);
+    student.setCreatedDate(new Date(System.currentTimeMillis()).toString());
+    this.students[this.count++] = student;
   }
 
   public Student[] findAll() {
-    return Arrays.copyOf(members, count);
+    return Arrays.copyOf(students, count);
   }
 
   public Student findByNo(int no) {
     for (int i = 0; i < this.count; i++) {
-      if (this.members[i].getNo() == no) {
-        return this.members[i];
+      if (this.students[i].getNo() == no) {
+        return this.students[i];
       }
     }
     return null;
   }
 
-  public void update(Student member) {
-    this.members[this.indexOf(member)] = member;
+  public void update(Student student) {
+    this.students[this.indexOf(student)] = student;
   }
 
-  public void delete(Student member) {
-    for (int i = this.indexOf(member) + 1; i < this.count; i++) {
-      this.members[i - 1] = this.members[i];
+  public void delete(Student student) {
+    for (int i = this.indexOf(student) + 1; i < this.count; i++) {
+      this.students[i - 1] = this.students[i];
     }
-    this.members[--this.count] = null; // 레퍼런스 카운트를 줄인다.
+    this.students[--this.count] = null; // 레퍼런스 카운트를 줄인다.
   }
 
   private int indexOf(Student b) {
     for (int i = 0; i < this.count; i++) {
-      if (this.members[i].getNo() == b.getNo()) {
+      if (this.students[i].getNo() == b.getNo()) {
         return i;
       }
     }
