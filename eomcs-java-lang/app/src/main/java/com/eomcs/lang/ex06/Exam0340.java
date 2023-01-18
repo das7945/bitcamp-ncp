@@ -9,7 +9,7 @@ public class Exam0340 {
     // 1부터 10까지 출력하기
     do
       System.out.println(++i);
-    while (i < 2);
+    while (i < 10);
 
     System.out.println("---------------------");
 

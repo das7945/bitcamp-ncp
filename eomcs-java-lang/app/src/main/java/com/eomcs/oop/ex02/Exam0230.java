@@ -33,7 +33,6 @@ public class Exam0230 {
       result /= value; // result = result / value
     }
 
-    // 인스턴스를 사용하지 않는 메서드라면 그냥 클래스 메서드로 두어라.
     static int abs(int a) {
       return a >= 0 ? a : a * -1;
     }
@@ -48,13 +47,13 @@ public class Exam0230 {
     // Calculator 내부에서 계산 결과를 관리한다.
     // int result = 0;
 
-
     Calculator.plus(2);
-    System.out.printf("result = %d\n", Calculator.result);
     Calculator.plus(3);
+    Calculator.minus(1);
+    Calculator.multiple(7);
+    Calculator.divide(3);
+
     System.out.printf("result = %d\n", Calculator.result);
-
-
   }
 }
 

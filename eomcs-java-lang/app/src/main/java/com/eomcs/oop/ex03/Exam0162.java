@@ -11,9 +11,9 @@ public class Exam0162 {
     // - 여러 인스턴스에서 공통으로 사용할 값을 담는 변수라면 static 필드로 선언하라!
     // - 조회용으로 사용할 변수이면서 외부에서도 사용해야 할 변수라면 public 으로 공개하라!
     // - 다음 변수는 클래스 변수(스태틱 변수)의 전형적인 예이다.
-    public static final int GUEST = 0; // 스태틱 필드, 클래스 필드 해당 값을 사용하기 위해서는
-    public static final int MEMBER = 1; // 스태틱 변수 앞에 클래스명을 명시하고 사용해야함.
-    public static final int MANAGER = 2; // 예) Member.GUEST
+    public static final int GUEST = 0;
+    public static final int MEMBER = 1;
+    public static final int MANAGER = 2;
 
     String id;
     String password;
@@ -31,7 +31,7 @@ public class Exam0162 {
     Member m4 = new Member();
     m4.id = "aaa";
     m4.password = "1111";
-    m4.type = Member.GUEST; // 임의의 메모리주소값에 0이라는 스태틱변수값을 가지고있다.
+    m4.type = Member.GUEST;
     // 스태틱 변수는 변수명 앞에 클래스명을 명시해야 한다.
 
     Member m5 = new Member();

@@ -12,13 +12,8 @@ public class Exam0310 {
       int sum;
       float aver;
     }
-    // 컴파일 시 작업순서상 제일 먼저 클래스메서드를 읽은 후
-    // class Score의 배열과 같은 형태로 준비 상태가 된다.
-
 
     // Score 레퍼런스 선언 + 인스턴스 생성(사용할 메모리 확보)
-    // new Score(); Score()의 이름에 임의의 주소로 배열에 내용이 들어갈 준비 상태가 됨.
-    // 임의의 주소는 s1에 소속됨.
     Score s1 = new Score();
 
     // s1에 저장된 주소를 s2에도 저장한다.

@@ -1,4 +1,4 @@
-// # 변수의 종류
+// # 인스턴스 변수
 //
 package com.eomcs.oop.ex03;
 

@@ -3,8 +3,6 @@ package com.eomcs.oop.ex02;
 //0) 낱개 변수 사용
 //1) 성적 데이터를 저장할 사용자 정의 데이터 타입을 만든다.
 //2) 리팩토링: 메서드 추출(extract method), static nested class
-
-// 리팩터링
 //
 public class Exam0120 {
 
@@ -49,7 +47,7 @@ public class Exam0120 {
     s.sum = s.kor + s.eng + s.math;
     s.aver = (float) s.sum / 3;
 
-    System.out.printf("%s: %d, %d, %d, %d, %.1f\n",
+    System.out.printf("%s: %d, %d, %d, %d, %.1f\n", 
         s.name, s.kor, s.eng, s.math, s.sum, s.aver);
   }
 }

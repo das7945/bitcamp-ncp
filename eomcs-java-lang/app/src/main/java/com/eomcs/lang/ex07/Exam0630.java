@@ -21,7 +21,7 @@ public class Exam0630 {
     for (Object key : keySet) {
       // getProperty()에 이름을 전달할 때는 String 을 전달해야 한다.
       // 물론 key에 들어 있는 것은 String 이 맞지만
-      // 문법 상으로는 key 변수가 Object로 되어 있다.;
+      // 문법 상으로는 key 변수가 Object로 되어 있다.
       // 따라서 getProperty()에 key 변수에 들어 있는 값을 전달할 때
       // String 이라고 컴파일러에게 알려줄 필요가 있다.
       String value = props.getProperty((String) key);

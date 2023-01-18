@@ -5,13 +5,13 @@ package com.eomcs.oop.ex03;
 public class Exam0160 {
 
   static class Member {
-    String id; // 인스턴스 필드
-    String password; // 인스턴스 필드
+    String id;
+    String password;
     int type; // 0: 손님, 1: 회원, 2: 관리자
   }
 
   public static void main(String[] args) {
-    Member m1 = new Member(); // 인스턴스변수는 new 명령으로 Member객체의 주소를 m1에 저장 후 사용가능.
+    Member m1 = new Member();
     m1.id = "aaa";
     m1.password = "1111";
     m1.type = 0; // 손님

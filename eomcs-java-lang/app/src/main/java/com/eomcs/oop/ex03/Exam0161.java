@@ -5,9 +5,9 @@ package com.eomcs.oop.ex03;
 public class Exam0161 {
 
   static class Member {
-    String id; // 인스턴스필드
-    String password; // 인스턴스 필드
-    int type;// 인스턴스 필드
+    String id;
+    String password;
+    int type; 
   }
 
   public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class Exam0161 {
     Member m5 = new Member();
     m5.id = "bbb";
     m5.password = "1111";
-    m5.type = MANAGER; // 임의의 주소값에 2라는 인스턴스 변수값을 가지고있는 MANAGER
+    m5.type = MANAGER;
 
     Member m6 = new Member();
     m6.id = "ccc";

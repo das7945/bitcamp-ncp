@@ -32,6 +32,5 @@ public class Exam0322 {
     }
     System.out.printf("count=%d, sum=%d\n", count, sum);
 
-
   }
 }

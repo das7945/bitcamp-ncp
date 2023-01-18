@@ -17,8 +17,6 @@ public class Exam01 {
 
     Sedan s = new Sedan();
     Truck t = new Truck();
-
-
   }
 
 }

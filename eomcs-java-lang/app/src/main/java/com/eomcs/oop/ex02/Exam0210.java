@@ -20,7 +20,6 @@ public class Exam0210 {
     result = divide(result, 3);
 
     System.out.printf("result = %d\n", result);
-
   }
 
   static int plus(int a, int b) {
@@ -30,7 +29,6 @@ public class Exam0210 {
   static int minus(int a, int b) {
     return a - b;
   }
-
 
   static int multiple(int a, int b) {
     return a * b;

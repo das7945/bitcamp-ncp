@@ -8,11 +8,9 @@ package com.eomcs.oop.ex02.test;
 //5) 인스턴스 메서드: 인스턴스 주소를 받는 더 쉬운 문법
 //6) 패키지 멤버 클래스:
 //7) 클래스를 역할에 따라 패키지로 분류
-//멤버의 접근 범위 설정
 //8) 생성자 도입: 인스턴스를 생성할 때 값을 초기화시키는 특별한 메서드
 //
-
-public class Scoretest0 {
+public class ScoreTest0 {
   public static void main(String[] args) {
     String name;
     int kor;
@@ -33,7 +31,7 @@ public class Scoretest0 {
     name = "임꺽정";
     kor = 90;
     eng = 80;
-    math = 75;
+    math = 70;
     sum = kor + eng + math;
     aver = (float) sum / 3;
 

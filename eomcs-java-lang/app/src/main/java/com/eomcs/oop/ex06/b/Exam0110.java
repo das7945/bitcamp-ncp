@@ -32,7 +32,7 @@ public class Exam0110 {
     int r2 = Calculator.plusi2(100);
 
     // 두 개의 부동소수점을 더할 때는 plusf()를 호출해야 한다.
-    float r3 = Calculator.plusf(35.7f, 22);
+    float r3 = Calculator.plusf(35.7f, 22.2f);
 
     System.out.printf("%d, %d, %.1f\n", r1, r2, r3);
 
