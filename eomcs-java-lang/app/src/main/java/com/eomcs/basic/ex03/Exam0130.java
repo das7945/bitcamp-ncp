@@ -20,14 +20,14 @@ public class Exam0130 {
         return "Member [name=" + name + ", age=" + age + "]";
       }
 
-      //      @Override
-      //      public int hashCode() {
-      //        final int mrime = 31;
-      //        int result = 1;
-      //        result = mrime * result + age;
-      //        result = mrime * result + ((name == null) ? 0 : name.hashCode());
-      //        return result;
-      //      }
+      @Override
+      public int hashCode() {
+        final int mrime = 31;
+        int result = 1;
+        result = mrime * result + age;
+        result = mrime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+      }
 
       @Override
       public boolean equals(Object obj) {

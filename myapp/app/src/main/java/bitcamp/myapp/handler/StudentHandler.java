@@ -78,12 +78,6 @@ public class StudentHandler {
 
     Student old = this.memberDao.findByNo(memberNo);
 
-    if (old == null) {
-      System.out.println("해당 번호의 회원이 없습니다.");
-      return;
-    }
-
-    // 변경할 데이터를 저장할 인스턴스 준비
     Student m = new Student();
     m.setNo(old.getNo());
     m.setCreatedDate(old.getCreatedDate());
@@ -163,18 +157,30 @@ public class StudentHandler {
       System.out.println("5. 삭제");
       System.out.println("6. 검색");
       System.out.println("0. 이전");
-      int menuNo = Prompt.inputInt(String.format("%s> ", this.title));
 
-      switch (menuNo) {
-        case 0: return;
-        case 1: this.inputMember(); break;
-        case 2: this.printMembers(); break;
-        case 3: this.printMember(); break;
-        case 4: this.modifyMember(); break;
-        case 5: this.deleteMember(); break;
-        case 6: this.searchMember(); break;
-        default:
-          System.out.println("잘못된 메뉴 번호 입니다.");
+      int menuNo;
+      try {
+        menuNo = Prompt.inputInt(String.format("%s> ", this.title));
+      } catch (Exception e) {
+        System.out.println("메뉴 번호가 옳지 않습니다.");
+        continue;
+      }
+
+      try {
+        switch (menuNo) {
+          case 0: return;
+          case 1: this.inputMember(); break;
+          case 2: this.printMembers(); break;
+          case 3: this.printMember(); break;
+          case 4: this.modifyMember(); break;
+          case 5: this.deleteMember(); break;
+          case 6: this.searchMember(); break;
+          default:
+            System.out.println("잘못된 메뉴 번호 입니다.");
+        }
+      } catch (Exception e) {
+        System.out.printf("실행 중 오류 발생! - %s : %s\n", e.getMessage(),
+            e.getClass().getSimpleName());
       }
     }
   }
