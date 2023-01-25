@@ -14,7 +14,7 @@ public class Exam0310 {
     Integer obj2 = Integer.valueOf("100");
     Integer obj3 = Integer.valueOf("64", 16);
 
-    System.out.printf("%d, %d, %d\n", obj1, obj2, obj3);
+    System.out.println(obj3);
 
   }
 
