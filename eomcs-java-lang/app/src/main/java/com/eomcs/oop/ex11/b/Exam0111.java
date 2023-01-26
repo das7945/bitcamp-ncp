@@ -23,6 +23,7 @@ public class Exam0111 {
     // 레퍼런스 선언
     A2.X obj;
 
+    A2.X x = new A2.X();
     // 인스턴스 생성
     obj = new A2.X();
   }
