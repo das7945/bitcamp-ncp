@@ -1,6 +1,8 @@
 // 아규먼트에 람다(lambda) 활용 II - 파라미터와 리턴 값이 있는 람다 만들기
 package com.eomcs.oop.ex12;
 
+import com.eomcs.oop.ex12.Exam0321.Calculator;
+
 public class Exam0320 {
 
   static interface Calculator {
@@ -13,6 +15,8 @@ public class Exam0320 {
 
   public static void main(String[] args) {
 
+    
+    test((a, b) -> a + b);
     // 람다 
     // 파라미터와 리턴 값이 있는 메서드 구현하기
     test((a, b) -> a + b);
