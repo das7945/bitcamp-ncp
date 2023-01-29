@@ -5,10 +5,11 @@ package com.eomcs.oop.ex09.e;
 public interface Computer2 extends Computer {
 
   // 기존 규칙에 새 규칙을 추가한다.
+  @Override
   void touch();
 }
 
-// 기존의 규칙을 손대지 않고 
+// 기존의 규칙을 손대지 않고
 // 새 프로젝트에서 사용할 규칙을 추가하기 위해
 // 기존 인터페이스를 상속 받아서 새 규칙을 추가하였다.
 // => 문제는 기존에 진행한 모든 프로젝트들과 호환되지 않는다.

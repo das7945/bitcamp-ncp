@@ -58,6 +58,8 @@ public class Exam0243 {
     list.add(m2);
     list.add(m3);
 
+    list.forEach(m -> System.out.printf("이름: %s, 나이: %d\n", m.name, m.age));
+
     // lambda 문법으로 Consumer 구현체 만들기
     list.forEach(m -> System.out.printf("이름: %s, 나이: %d\n", m.name, m.age));
   }

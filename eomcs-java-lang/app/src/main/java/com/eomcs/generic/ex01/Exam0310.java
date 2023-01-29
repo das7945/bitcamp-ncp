@@ -41,6 +41,7 @@ public class Exam0310 {
     obj.v1 = new String("Hello");
     obj.v2 = Integer.valueOf(100);
     obj.v3 = new Member("홍길동", 20);
+    //    obj.v4 = new Member("길동", 20);
 
     // 지정된 타입이 아닌 타입의 값을 설정한다면,
     //    obj.v1 = new Member("홍길동", 20); // 컴파일 오류!
