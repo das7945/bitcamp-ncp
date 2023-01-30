@@ -13,6 +13,8 @@ public class Exam0221 {
     list.add("ddd");
     list.add("eee");
 
+    System.out.println(list);
+
     Iterator<String> 컬렉션에서값을꺼내주는객체 = list.iterator();
 
     while (컬렉션에서값을꺼내주는객체.hasNext()) {

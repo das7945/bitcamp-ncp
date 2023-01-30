@@ -24,6 +24,7 @@ public class Exam0230 {
           entry.getValue());
     }
 
+    System.out.println(map.entrySet());
   }
 
 }

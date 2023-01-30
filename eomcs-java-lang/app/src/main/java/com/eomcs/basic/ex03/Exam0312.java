@@ -52,6 +52,10 @@ public class Exam0312 {
 
     Object[] arr = list.toArray();
 
+    System.out.println(arr.hashCode());
+    System.out.println(list.toArray().hashCode());
+
+
     for (Object item : arr) {
       Member m = (Member) item;
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);

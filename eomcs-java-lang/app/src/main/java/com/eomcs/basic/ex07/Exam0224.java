@@ -14,6 +14,8 @@ public class Exam0224 {
     queue.offer("ddd");
     queue.offer("eee");
 
+    System.out.println(queue);
+
     Iterator<String> 컬렉션에서값을꺼내주는객체 = queue.iterator();
 
     while (컬렉션에서값을꺼내주는객체.hasNext()) {
