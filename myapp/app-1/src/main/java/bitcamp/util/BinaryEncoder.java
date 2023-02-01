@@ -9,7 +9,8 @@ public class BinaryEncoder {
     bytes[3] = (byte) value;
     return bytes;
   }
-  
+
+
   public static byte[] write(String value) {
     // [2byte: 문자열의 바이트 배열 길이][n바이트:문자열의 바이트배열]
     byte[] strBytes = value.getBytes();
@@ -18,6 +19,7 @@ public class BinaryEncoder {
     System.arraycopy(strBytes, 0 , bytes, 2 , strBytes.length);
     bytes[0] = (byte) (strBytes.length >> 8);
     bytes[1] = (byte) (strBytes.length);
+
     return bytes;
   }
 
@@ -30,3 +32,10 @@ public class BinaryEncoder {
     }
   }
 }
+
+/*  a     b     c     d     e      f    3     1
+   1010  1011  xxxx  xxxx  xxxx  xxxx   xxxx  xxxx
+   xxxx  xxxx  xxxx  xxxx  xxxx  xxxx | 1010  1011  //  (byte) (value >> 24);
+
+
+ */

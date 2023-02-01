@@ -14,7 +14,8 @@ public class CalculatorClient {
         Scanner keyboardScanner = new Scanner(System.in);
         Socket socket = new Socket("localhost", 8888);
         PrintStream out = new PrintStream(socket.getOutputStream());
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        ) {
 
       receiveResponse(in); // 서버의 인사말을 받기
 
@@ -22,6 +23,10 @@ public class CalculatorClient {
         String input = prompt(keyboardScanner);
         if (input == null) {
           continue;
+        }else if(input.equals("quit")) {
+          sendRequest(out, input); // 서버에 요청을 보내기
+          System.out.println("종료");
+          break;
         }
         sendRequest(out, input); // 서버에 요청을 보내기
         receiveResponse(in); // 서버의 실행 결과를 받기
@@ -36,8 +41,9 @@ public class CalculatorClient {
   static String prompt(Scanner keyboardScanner) {
     System.out.print("계산식> ");
     String input = keyboardScanner.nextLine();
-
-    if (input.split(" ").length != 3) { // 사용자가 입력한 값을 검증
+    if(input.equals("quit")) {
+      return "quit";
+    }else  if (input.split(" ").length != 3) { // 사용자가 입력한 값을 검증
       System.out.println("입력 형식이 올바르지 않습니다. 예) 23 + 5");
       return null;
     }
