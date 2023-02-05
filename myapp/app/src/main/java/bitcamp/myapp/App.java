@@ -4,6 +4,7 @@ import bitcamp.myapp.handler.BoardHandler;
 import bitcamp.myapp.handler.StudentHandler;
 import bitcamp.myapp.handler.TeacherHandler;
 import bitcamp.util.Prompt;
+
 public class App {
 
   public static void main(String[] args) {

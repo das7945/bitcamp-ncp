@@ -11,7 +11,7 @@ public class CalcClient {
   public static void main(String[] args) {
 
     try (Scanner keyboardScanner = new Scanner(System.in);
-        Socket socket = new Socket("localhost", 8888);
+        Socket socket = new Socket("lo", 8888);
         PrintStream out = new PrintStream(socket.getOutputStream());			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
       // 계산식 입력받을 때 출력할 메세지
