@@ -33,6 +33,8 @@ public class Exam0210 {
 
     MyThread t1 = new MyThread("t1");
 
+    t1.start();
+
     // "t1" 스레드의 우선 순위 조회
     // => "main" 스레드를 실행하는 동안 만든 스레드는 "main"의 자식 스레드라 부른다.
     // => 자식 스레드는 부모 스레드의 우선 순위와 같은 값을 갖는다.
