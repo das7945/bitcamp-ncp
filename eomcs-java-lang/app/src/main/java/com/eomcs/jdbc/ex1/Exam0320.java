@@ -25,7 +25,7 @@ public class Exam0320 {
 
       System.out.println(rs.getClass().getName());
 
-      // ResultSet 객체를 사용하여 
+      // ResultSet 객체를 사용하여
       // select의 실행 결과 중에서 한 레코드(row)를 서버에서 가져온다.
       //
       boolean isReceived = rs.next(); // 가져왔으면 true, 가져올 게 없다면 false
