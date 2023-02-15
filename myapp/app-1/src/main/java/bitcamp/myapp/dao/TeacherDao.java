@@ -1,13 +1,14 @@
 package bitcamp.myapp.dao;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import bitcamp.myapp.vo.Teacher;
-import bitcamp.util.BinaryDecoder;
-import bitcamp.util.BinaryEncoder;
 
 public class TeacherDao {
 
@@ -57,27 +58,9 @@ public class TeacherDao {
   }
 
   public void save(String filename) {
-    try  (
-        // 1) 바이너리 데이터(바이트 배열)를 출력 할 도구를 준비한다.
-        FileOutputStream out = new FileOutputStream(filename)) {
+    try (FileWriter out = new FileWriter(filename)) {
 
-      // 2) 게시글 개수를 출력 : 4byte
-      out.write(BinaryEncoder.write(list.size()));
-
-      // 3) 게시글 출력
-      // 목록에서 Board 객체를 꺼내 바이트 배열로 만든 다음 출력한다.
-      for (Teacher t : list) {
-        out.write(BinaryEncoder.write(t.getNo()));
-        out.write(BinaryEncoder.write(t.getName()));
-        out.write(BinaryEncoder.write(t.getTel()));
-        out.write(BinaryEncoder.write(t.getCreatedDate()));
-        out.write(BinaryEncoder.write(t.getEmail()));
-        out.write(BinaryEncoder.write(t.getDegree()));
-        out.write(BinaryEncoder.write(t.getSchool()));
-        out.write(BinaryEncoder.write(t.getMajor()));
-        out.write(BinaryEncoder.write(t.getWage()));
-
-      }
+      out.write(new Gson().toJson(list));
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -85,33 +68,16 @@ public class TeacherDao {
   }
 
   public void load(String filename) {
-    if (list.size() > 0 ) {
-      return ;
+    if (list.size() > 0) { // 중복 로딩 방지!
+      return;
     }
 
-    try(
+    try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
 
-        FileInputStream in = new FileInputStream(filename)) {
+      list = new Gson().fromJson(in, new TypeToken<List<Teacher>>() {});
 
-      int size = BinaryDecoder.readInt(in);
-      for (int i = 0; i < size; i++) {
-
-        Teacher t = new Teacher();
-        t.setNo(BinaryDecoder.readInt(in));
-        t.setName(BinaryDecoder.readString(in));
-        t.setTel(BinaryDecoder.readString(in));
-        t.setCreatedDate(BinaryDecoder.readString(in));
-        t.setEmail(BinaryDecoder.readString(in));
-        t.setDegree(BinaryDecoder.readInt(in));
-        t.setSchool(BinaryDecoder.readString(in));
-        t.setMajor(BinaryDecoder.readString(in));
-        t.setWage(BinaryDecoder.readInt(in));
-
-        list.add(t);
-      }
-
-      if(list.size() > 0) {
-        list.get(list.size() -1).getNo();
+      if (list.size() > 0) {
+        lastNo = list.get(list.size() - 1).getNo();
       }
 
     } catch (Exception e) {

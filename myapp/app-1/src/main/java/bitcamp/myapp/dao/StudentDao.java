@@ -1,13 +1,14 @@
 package bitcamp.myapp.dao;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import bitcamp.myapp.vo.Student;
-import bitcamp.util.BinaryDecoder;
-import bitcamp.util.BinaryEncoder;
 
 public class StudentDao {
 
@@ -54,28 +55,11 @@ public class StudentDao {
   public boolean delete(Student s) {
     return list.remove(s);
   }
+
   public void save(String filename) {
-    try  (
-        // 1) 바이너리 데이터(바이트 배열)를 출력 할 도구를 준비한다.
-        FileOutputStream out = new FileOutputStream(filename)) {
+    try (FileWriter out = new FileWriter(filename)) {
 
-      // 2) 게시글 개수를 출력 : 4byte
-      out.write(BinaryEncoder.write(list.size()));
-
-      // 3) 게시글 출력
-      // 목록에서 Board 객체를 꺼내 바이트 배열로 만든 다음 출력한다.
-      for (Student s : list) {
-        out.write(BinaryEncoder.write(s.getNo()));
-        out.write(BinaryEncoder.write(s.getName()));
-        out.write(BinaryEncoder.write(s.getTel()));
-        out.write(BinaryEncoder.write(s.getCreatedDate()));
-        out.write(BinaryEncoder.write(s.getPostNo()));
-        out.write(BinaryEncoder.write(s.getBasicAddress()));
-        out.write(BinaryEncoder.write(s.getDetailAddress()));
-        out.write(BinaryEncoder.write(s.isWorking()));
-        out.write(BinaryEncoder.write(s.getGender()));
-        out.write(BinaryEncoder.write(s.getLevel()));
-      }
+      out.write(new Gson().toJson(list));
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -83,39 +67,28 @@ public class StudentDao {
   }
 
   public void load(String filename) {
-    if (list.size() > 0 ) {
-      return ;
+    if (list.size() > 0) { // 중복 로딩 방지!
+      return;
     }
 
-    try(
+    try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
 
-        FileInputStream in = new FileInputStream(filename)) {
+      list = new Gson().fromJson(in, new TypeToken<List<Student>>() {});
 
-      int size = BinaryDecoder.readInt(in);
-      for (int i = 0; i < size; i++) {
-
-        Student s = new Student();
-        s.setNo(BinaryDecoder.readInt(in));
-        s.setName(BinaryDecoder.readString(in));
-        s.setTel(BinaryDecoder.readString(in));
-        s.setCreatedDate(BinaryDecoder.readString(in));
-        s.setPostNo(BinaryDecoder.readString(in));
-        s.setBasicAddress(BinaryDecoder.readString(in));
-        s.setDetailAddress(BinaryDecoder.readString(in));
-        s.setWorking(BinaryDecoder.readInt(in));
-        s.setGender(BinaryDecoder.readInt(in));
-        s.setLevel(BinaryDecoder.readInt(in));
-
-
-        list.add(s);
-      }
-
-      if(list.size() > 0) {
-        list.get(list.size() -1).getNo();
+      if (list.size() > 0) {
+        lastNo = list.get(list.size() - 1).getNo();
       }
 
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
+
 }
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ public class StudentHandler {
     m.setPostNo(Prompt.inputString("우편번호? "));
     m.setBasicAddress(Prompt.inputString("주소1? "));
     m.setDetailAddress(Prompt.inputString("주소2? "));
-    m.setWorking(Prompt.inputInt("0. 미취업\n1. 재직중\n재직자? ") == 1 ? '1' : '0');
+    m.setWorking(Prompt.inputInt("0. 미취업\n1. 재직중\n재직자? ") == 1);
     m.setGender(Prompt.inputInt("0. 남자\n1. 여자\n성별? ") == 0 ? 'M' : 'W');
     m.setLevel((byte) Prompt.inputInt("0. 비전공자\n1. 준전공자\n2. 전공자\n전공? "));
 
@@ -37,7 +37,7 @@ public class StudentHandler {
     for (Student m : members) {
       System.out.printf("%d\t%s\t%s\t%s\t%s\n",
           m.getNo(), m.getName(), m.getTel(),
-          m.isWorking() == '1' ? "예" : "아니오",
+          m.isWorking() ? "예" : "아니오",
               getLevelText(m.getLevel()));
     }
   }
@@ -52,7 +52,7 @@ public class StudentHandler {
     System.out.printf("우편번호: %s\n", m.getNo());
     System.out.printf("기본주소: %s\n", m.getBasicAddress());
     System.out.printf("상세주소: %s\n", m.getDetailAddress());
-    System.out.printf("재직여부: %s\n", m.isWorking()  ? "예" : "아니오");
+    System.out.printf("재직여부: %s\n", m.isWorking() ? "예" : "아니오");
     System.out.printf("    성별: %s\n", m.getGender() == 'M' ? "남자" : "여자");
     System.out.printf("    전공: %s\n", getLevelText(m.getLevel()));
     System.out.printf("  등록일: %s\n", m.getCreatedDate());
@@ -89,8 +89,10 @@ public class StudentHandler {
     m.setDetailAddress(Prompt.inputString(String.format("상세주소(%s)? ", old.getDetailAddress())));
     m.setWorking(Prompt.inputInt(String.format(
         "0. 미취업\n1. 재직중\n재직여부(%s)? ",
-        old.isWorking() == '1' ? "재직중" : "미취업")) == 1 ? '1' : '0');
-    m.setGender(Prompt.inputInt(String.format("0. 남자\n1. 여자\n성별(%s)? ",old.getGender() == 'M' ? "남자" : "여자")) == 0 ? 'M' : 'W');
+        old.isWorking() ? "재직중" : "미취업")) == 1);
+    m.setGender(Prompt.inputInt(String.format(
+        "0. 남자\n1. 여자\n성별(%s)? ",
+        old.getGender() == 'M' ? "남자" : "여자")) == 0 ? 'M' : 'W');
     m.setLevel((byte) Prompt.inputInt(String.format(
         "0. 비전공자\n1. 준전공자\n2. 전공자\n전공(%s)? ",
         getLevelText(old.getLevel()))));
@@ -139,7 +141,7 @@ public class StudentHandler {
       if (m.getName().equalsIgnoreCase(name)) {
         System.out.printf("%d\t%s\t%s\t%s\t%s\n",
             m.getNo(), m.getName(), m.getTel(),
-            m.isWorking() == 1 ? "예" : "아니오",
+            m.isWorking() ? "예" : "아니오",
                 getLevelText(m.getLevel()));
       }
     }
@@ -147,8 +149,7 @@ public class StudentHandler {
 
   public void service() {
 
-
-    memberDao.load("student.data");
+    memberDao.load("student.json");
 
     while (true) {
       System.out.printf("[%s]\n", this.title);
@@ -171,7 +172,7 @@ public class StudentHandler {
       try {
         switch (menuNo) {
           case 0:
-            memberDao.save("student.data");
+            memberDao.save("student.json");
             return;
           case 1: this.inputMember(); break;
           case 2: this.printMembers(); break;
