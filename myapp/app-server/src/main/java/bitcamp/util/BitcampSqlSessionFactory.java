@@ -11,7 +11,7 @@ public class BitcampSqlSessionFactory implements SqlSessionFactory {
 
   SqlSessionFactory original;
 
-  ThreadLocal<SqlSession> sqlSessionLocal = new ThreadLocal<> ();
+  ThreadLocal<SqlSession> sqlSessionLocal = new ThreadLocal<>();
 
   public void prepareSqlSessionForThread() {
     SqlSession sqlSession = sqlSessionLocal.get();
@@ -28,16 +28,16 @@ public class BitcampSqlSessionFactory implements SqlSessionFactory {
 
   public BitcampSqlSessionFactory(SqlSessionFactory original) {
     this.original = original;
-
   }
 
   @Override
   public SqlSession openSession() {
     SqlSession sqlSession = sqlSessionLocal.get();
     if (sqlSession == null) {
-      // 트랜잭션없이 사용할 SqlSession 리턴
+      // 트랜잭션 없이 사용할 SqlSession 리턴
       return original.openSession(true);
     }
+
     // 스레드에서 공유할 SqlSession 객체 리턴
     return sqlSession;
   }
@@ -81,5 +81,6 @@ public class BitcampSqlSessionFactory implements SqlSessionFactory {
   public Configuration getConfiguration() {
     return original.getConfiguration();
   }
+
 
 }

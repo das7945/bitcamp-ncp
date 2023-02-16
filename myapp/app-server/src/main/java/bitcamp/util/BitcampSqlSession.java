@@ -10,7 +10,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
-public class BitcampSqlSession implements SqlSession{
+public class BitcampSqlSession implements SqlSession {
 
   SqlSession original;
 
@@ -173,7 +173,6 @@ public class BitcampSqlSession implements SqlSession{
   public Connection getConnection() {
     return original.getConnection();
   }
-
 
 
 }

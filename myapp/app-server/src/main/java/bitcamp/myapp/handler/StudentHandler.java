@@ -10,7 +10,6 @@ import bitcamp.util.TransactionManager;
 public class StudentHandler {
 
   private TransactionManager txManager;
-
   private MemberDao memberDao;
   private StudentDao studentDao;
   private String title;
@@ -35,7 +34,6 @@ public class StudentHandler {
     s.setGender(streamTool.promptInt("0. 남자\n1. 여자\n성별? ") == 0 ? 'M' : 'W');
     s.setLevel((byte) streamTool.promptInt("0. 비전공자\n1. 준전공자\n2. 전공자\n전공? "));
 
-    // 현재 스레드가 갖고 있는 Connection 객체를 리턴 받는다.
     txManager.startTransaction();
     try {
       memberDao.insert(s);
@@ -130,7 +128,6 @@ public class StudentHandler {
 
     String str = streamTool.promptString("정말 변경하시겠습니까?(y/N) ");
     if (str.equalsIgnoreCase("Y")) {
-      // 현재 스레드가 갖고 있는 Connection 객체를 리턴 받는다.
       txManager.startTransaction();
       try {
         memberDao.update(m);
@@ -164,8 +161,6 @@ public class StudentHandler {
       streamTool.println("삭제 취소했습니다.").send();
       return;
     }
-
-    // 현재 스레드가 갖고 있는 Connection 객체를 리턴 받는다.
 
     txManager.startTransaction();
     try {

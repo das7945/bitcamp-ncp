@@ -3,11 +3,11 @@ package bitcamp.util;
 import org.apache.ibatis.session.SqlSession;
 
 public class TransactionManager {
+
   BitcampSqlSessionFactory sqlSessionFactory;
 
   public TransactionManager(BitcampSqlSessionFactory sqlSessionFactory) {
     this.sqlSessionFactory = sqlSessionFactory;
-
   }
 
   public void startTransaction() {
@@ -26,3 +26,13 @@ public class TransactionManager {
     sqlSessionFactory.clearSqlSessionForThread();
   }
 }
+
+
+
+
+
+
+
+
+
+

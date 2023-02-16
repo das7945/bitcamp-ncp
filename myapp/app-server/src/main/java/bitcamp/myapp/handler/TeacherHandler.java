@@ -14,7 +14,7 @@ public class TeacherHandler {
   private TeacherDao teacherDao;
   private String title;
 
-  public TeacherHandler(String title, TransactionManager txManager,MemberDao memberDao, TeacherDao teacherDao) {
+  public TeacherHandler(String title, TransactionManager txManager, MemberDao memberDao, TeacherDao teacherDao) {
     this.title = title;
     this.txManager = txManager;
     this.memberDao = memberDao;
@@ -116,7 +116,6 @@ public class TeacherHandler {
 
     String str = streamTool.promptString("정말 변경하시겠습니까?(y/N) ");
     if (str.equalsIgnoreCase("Y")) {
-      // 현재 스레드에 보관된 Connection 객체를 리턴 받는다.
       txManager.startTransaction();
       try {
         memberDao.update(m);
@@ -151,11 +150,11 @@ public class TeacherHandler {
       return;
     }
 
-    // 현재 스레드에 보관된 Connection 객체를 리턴 받는다.
     txManager.startTransaction();
     try {
       teacherDao.delete(teacherNo);
       memberDao.delete(teacherNo);
+      txManager.commit();
       streamTool.println("삭제했습니다.").send();
 
     } catch (Exception e) {
