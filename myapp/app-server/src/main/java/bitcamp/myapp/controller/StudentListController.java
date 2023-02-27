@@ -6,6 +6,7 @@ import bitcamp.myapp.service.StudentService;
 
 public class StudentListController implements PageController {
 
+  public static String path = "/student/list";
   private StudentService studentService;
 
   public StudentListController(StudentService studentService) {

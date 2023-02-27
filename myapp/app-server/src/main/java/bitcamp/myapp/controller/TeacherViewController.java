@@ -6,6 +6,7 @@ import bitcamp.myapp.service.TeacherService;
 
 public class TeacherViewController implements PageController {
 
+  public static String path = "/teacher/view";
   private TeacherService teacherService;
 
   public TeacherViewController(TeacherService teacherService) {

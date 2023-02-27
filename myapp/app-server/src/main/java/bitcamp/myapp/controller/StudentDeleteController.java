@@ -6,6 +6,7 @@ import bitcamp.myapp.service.StudentService;
 
 public class StudentDeleteController implements PageController {
 
+  public static String path = "/student/delete";
   private StudentService studentService;
 
   public StudentDeleteController(StudentService studentService) {

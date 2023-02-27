@@ -7,6 +7,7 @@ import bitcamp.myapp.vo.Student;
 
 public class StudentUpdateController implements PageController {
 
+  public static String path = "/student/update";
   private StudentService studentService;
 
   public StudentUpdateController(StudentService studentService) {
