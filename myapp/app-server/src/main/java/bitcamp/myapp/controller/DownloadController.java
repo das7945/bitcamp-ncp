@@ -8,22 +8,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import bitcamp.myapp.service.BoardService;
 import bitcamp.myapp.vo.BoardFile;
+import bitcamp.util.Controller;
+import bitcamp.util.RequestMapping;
+import bitcamp.util.RequestParam;
 
-public class DownloadController implements PageController {
+@Controller
+public class DownloadController {
 
-  public static String path = "/download/boardfile";
   private BoardService boardService;
 
   public DownloadController(BoardService boardService) {
     this.boardService = boardService;
   }
 
-  @Override
-  public String execute(HttpServletRequest request, HttpServletResponse response) {
+  @RequestMapping("/download/boardfile")
+  public String execute(
+      @RequestParam("fileNo") int fileNo,
+      HttpServletRequest request,
+      HttpServletResponse response) {
 
     try {
-      int fileNo = Integer.parseInt(request.getParameter("fileNo"));
-
       BoardFile boardFile = boardService.getFile(fileNo);
       if (boardFile == null) {
         throw new RuntimeException("파일 정보 없음!");

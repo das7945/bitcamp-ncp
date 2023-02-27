@@ -3,7 +3,7 @@ package bitcamp.myapp.listener;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,6 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.BoardFileDao;
 import bitcamp.myapp.dao.MemberDao;
@@ -23,7 +22,10 @@ import bitcamp.myapp.service.impl.DefaultBoardService;
 import bitcamp.myapp.service.impl.DefaultStudentService;
 import bitcamp.myapp.service.impl.DefaultTeacherService;
 import bitcamp.util.BitcampSqlSessionFactory;
+import bitcamp.util.Controller;
 import bitcamp.util.DaoGenerator;
+import bitcamp.util.RequestHandlerMapping;
+import bitcamp.util.RequestMapping;
 import bitcamp.util.TransactionManager;
 
 @WebListener
@@ -86,12 +88,9 @@ public class ContextLoaderListener implements ServletContextListener {
         if (clazz.isInterface()) { // 인터페이스는 제외
           continue;
         }
-        Class<?>[] interfaces = clazz.getInterfaces();
-        for (Class<?> c : interfaces) {
-          if (c == PageController.class) {
-            controllerClasses.add(clazz);
-            break;
-          }
+        Controller anno = clazz.getAnnotation(Controller.class);
+        if (anno != null) {
+          controllerClasses.add(clazz);
         }
       }
     }
@@ -104,10 +103,15 @@ public class ContextLoaderListener implements ServletContextListener {
       Object[] arguments = prepareArguments(params);
       Object controller = constructor.newInstance(arguments);
 
-      try {
-        Field field = c.getDeclaredField("path");
-        ctx.setAttribute((String) field.get(null), controller);
-      } catch (Exception e) {}
+      // 페이지 컨트롤러에서 RequestMapping 애노테이션이 붙은 메서드를 찾아
+      // ServletContext 보관소에 저장한다.
+      Method[] methods = c.getDeclaredMethods();
+      for (Method m : methods) {
+        RequestMapping anno = m.getAnnotation(RequestMapping.class);
+        if (anno == null) continue;
+        ctx.setAttribute(anno.value(), new RequestHandlerMapping(controller, m));
+        System.out.println(c.getName() + "." + m.getName() + "() 요청 핸들러 등록!");
+      }
 
     }
   }
