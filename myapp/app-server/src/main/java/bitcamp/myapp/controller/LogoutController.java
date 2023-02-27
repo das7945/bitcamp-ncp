@@ -10,6 +10,7 @@ public class LogoutController implements PageController {
     request.getSession().invalidate();
     return "redirect:../";
   }
+
 }
 
 

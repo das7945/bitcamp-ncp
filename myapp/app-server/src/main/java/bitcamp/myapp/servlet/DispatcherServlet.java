@@ -34,8 +34,8 @@ public class DispatcherServlet extends HttpServlet {
 
     ServletContext ctx = getServletContext();
 
-    //클라이언트가 요청한 URL을 가지고 페이지 컨트롤러를 찾는다.
-    PageController controller =  (PageController) ctx.getAttribute(pathInfo);
+    // 클라이언트가 요청한 URL을 가지고 페이지 컨트롤러를 찾는다.
+    PageController controller = (PageController) ctx.getAttribute(pathInfo);
     if (controller == null) {
       request.getRequestDispatcher("/NotFoundController.jsp").forward(request, response);
       return;

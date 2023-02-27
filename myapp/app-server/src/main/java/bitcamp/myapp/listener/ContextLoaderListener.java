@@ -8,28 +8,29 @@ import javax.servlet.annotation.WebListener;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import bitcamp.myapp.controller.AuthFailController;
+import bitcamp.myapp.controller.BoardDeleteController;
+import bitcamp.myapp.controller.BoardFileDeleteController;
+import bitcamp.myapp.controller.BoardFormController;
+import bitcamp.myapp.controller.BoardInsertController;
+import bitcamp.myapp.controller.BoardListController;
+import bitcamp.myapp.controller.BoardUpdateController;
+import bitcamp.myapp.controller.BoardViewController;
+import bitcamp.myapp.controller.DownloadController;
 import bitcamp.myapp.controller.LoginController;
 import bitcamp.myapp.controller.LoginFormController;
 import bitcamp.myapp.controller.LogoutController;
-import bitcamp.myapp.controller.board.BoardDeleteController;
-import bitcamp.myapp.controller.board.BoardFileDeleteController;
-import bitcamp.myapp.controller.board.BoardFormController;
-import bitcamp.myapp.controller.board.BoardInsertController;
-import bitcamp.myapp.controller.board.BoardListController;
-import bitcamp.myapp.controller.board.BoardUpdateController;
-import bitcamp.myapp.controller.board.BoardViewController;
-import bitcamp.myapp.controller.student.StudentDeleteController;
-import bitcamp.myapp.controller.student.StudentFormController;
-import bitcamp.myapp.controller.student.StudentInsertController;
-import bitcamp.myapp.controller.student.StudentListController;
-import bitcamp.myapp.controller.student.StudentUpdateController;
-import bitcamp.myapp.controller.student.StudentViewController;
-import bitcamp.myapp.controller.teacher.TeacherDeleteController;
-import bitcamp.myapp.controller.teacher.TeacherFormController;
-import bitcamp.myapp.controller.teacher.TeacherInsertController;
-import bitcamp.myapp.controller.teacher.TeacherListController;
-import bitcamp.myapp.controller.teacher.TeacherUpdateController;
-import bitcamp.myapp.controller.teacher.TeacherViewController;
+import bitcamp.myapp.controller.StudentDeleteController;
+import bitcamp.myapp.controller.StudentFormController;
+import bitcamp.myapp.controller.StudentInsertController;
+import bitcamp.myapp.controller.StudentListController;
+import bitcamp.myapp.controller.StudentUpdateController;
+import bitcamp.myapp.controller.StudentViewController;
+import bitcamp.myapp.controller.TeacherDeleteController;
+import bitcamp.myapp.controller.TeacherFormController;
+import bitcamp.myapp.controller.TeacherInsertController;
+import bitcamp.myapp.controller.TeacherListController;
+import bitcamp.myapp.controller.TeacherUpdateController;
+import bitcamp.myapp.controller.TeacherViewController;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.BoardFileDao;
 import bitcamp.myapp.dao.MemberDao;
@@ -95,6 +96,8 @@ public class ContextLoaderListener implements ServletContextListener {
       TeacherUpdateController teacherUpdateController = new TeacherUpdateController(teacherService);
       TeacherDeleteController teacherDeleteController = new TeacherDeleteController(teacherService);
 
+      DownloadController downloadController = new DownloadController(boardService);
+
       // 서블릿 컨텍스트 보관소를 알아낸다.
       ServletContext ctx = sce.getServletContext();
 
@@ -107,10 +110,10 @@ public class ContextLoaderListener implements ServletContextListener {
       ctx.setAttribute("/board/list", boardListController);
       ctx.setAttribute("/board/form", boardFormController);
       ctx.setAttribute("/board/insert", boardInsertController);
-      ctx.setAttribute("/board/delete", boardDeleteController);
       ctx.setAttribute("/board/view", boardViewController);
-      ctx.setAttribute("/board/filedelete", boardFileDeleteController);
       ctx.setAttribute("/board/update", boardUpdateController);
+      ctx.setAttribute("/board/delete", boardDeleteController);
+      ctx.setAttribute("/board/filedelete", boardFileDeleteController);
 
       ctx.setAttribute("/student/list", studentListController);
       ctx.setAttribute("/student/form", studentFormController);
@@ -125,6 +128,8 @@ public class ContextLoaderListener implements ServletContextListener {
       ctx.setAttribute("/teacher/view", teacherViewController);
       ctx.setAttribute("/teacher/update", teacherUpdateController);
       ctx.setAttribute("/teacher/delete", teacherDeleteController);
+
+      ctx.setAttribute("/download/boardfile", downloadController);
 
     } catch (Exception e) {
       System.out.println("웹 애플리케이션 자원을 준비하는 중에 오류 발생!");
