@@ -13,6 +13,8 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.BoardFileDao;
 import bitcamp.myapp.dao.MemberDao;
@@ -22,10 +24,8 @@ import bitcamp.myapp.service.impl.DefaultBoardService;
 import bitcamp.myapp.service.impl.DefaultStudentService;
 import bitcamp.myapp.service.impl.DefaultTeacherService;
 import bitcamp.util.BitcampSqlSessionFactory;
-import bitcamp.util.Controller;
 import bitcamp.util.DaoGenerator;
 import bitcamp.util.RequestHandlerMapping;
-import bitcamp.util.RequestMapping;
 import bitcamp.util.TransactionManager;
 
 @WebListener
@@ -109,7 +109,7 @@ public class ContextLoaderListener implements ServletContextListener {
       for (Method m : methods) {
         RequestMapping anno = m.getAnnotation(RequestMapping.class);
         if (anno == null) continue;
-        ctx.setAttribute(anno.value(), new RequestHandlerMapping(controller, m));
+        ctx.setAttribute(anno.value()[0], new RequestHandlerMapping(controller, m));
         System.out.println(c.getName() + "." + m.getName() + "() 요청 핸들러 등록!");
       }
 

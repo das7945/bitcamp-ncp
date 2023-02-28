@@ -52,6 +52,19 @@ repositories {
 }
 
 dependencies {
+
+    //Spring Web 라이브러리
+    // => spring-context 의존 라이브러리 자동 추가  
+    //implementation 'org.springframework:spring-webMVC:6.0.5'    
+
+
+    //Spring Web 라이브러리
+    implementation 'org.springframework:spring-web:6.0.5'    
+    
+    // Spring Ioc 컨테이너 
+      implementation 'org.springframework:spring-context:6.0.5'   
+    
+    //Google Json     
     implementation 'com.google.code.gson:gson:2.10.1'
     
     // MariaDB JDBC 드라이버
@@ -66,6 +79,8 @@ dependencies {
     // - 배포 파일에는 이 라이브러리를 제외시킨다.
     //   왜? 서블릿 컨테이너에 포함되어 있기 때문이다.
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+    
+    
     
     // JSTL 라이브러리
     implementation 'javax.servlet:jstl:1.2'

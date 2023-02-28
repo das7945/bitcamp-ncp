@@ -3,12 +3,20 @@ package bitcamp.myapp.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.StudentDao;
 import bitcamp.myapp.service.StudentService;
 import bitcamp.myapp.vo.Student;
 import bitcamp.util.TransactionManager;
 
+@Component
+@Service
+@Repository
+@Controller
 public class DefaultStudentService implements StudentService {
 
   private TransactionManager txManager;
@@ -21,6 +29,7 @@ public class DefaultStudentService implements StudentService {
     this.studentDao = studentDao;
   }
 
+  @Override
   public void add(Student student) {
     txManager.startTransaction();
     try {
@@ -34,14 +43,17 @@ public class DefaultStudentService implements StudentService {
     }
   }
 
+  @Override
   public List<Student> list(String keyword) {
     return studentDao.findAll(keyword);
   }
 
+  @Override
   public Student get(int no) {
     return studentDao.findByNo(no);
   }
 
+  @Override
   public Student get(String email, String password) {
     Map<String,Object> paramMap = new HashMap<>();
     paramMap.put("email", email);
@@ -50,6 +62,7 @@ public class DefaultStudentService implements StudentService {
     return studentDao.findByEmailAndPassword(paramMap);
   }
 
+  @Override
   public void update(Student student) {
     try {
       txManager.startTransaction();
@@ -65,6 +78,7 @@ public class DefaultStudentService implements StudentService {
     }
   }
 
+  @Override
   public void delete(int no) {
     try {
       txManager.startTransaction();
