@@ -3,6 +3,7 @@ package bitcamp.myapp.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -19,15 +20,10 @@ import bitcamp.util.TransactionManager;
 @Controller
 public class DefaultStudentService implements StudentService {
 
-  private TransactionManager txManager;
-  private MemberDao memberDao;
-  private StudentDao studentDao;
+  @Autowired private TransactionManager txManager;
+  @Autowired private MemberDao memberDao;
+  @Autowired private StudentDao studentDao;
 
-  public DefaultStudentService(TransactionManager txManager, MemberDao memberDao, StudentDao studentDao) {
-    this.txManager = txManager;
-    this.memberDao = memberDao;
-    this.studentDao = studentDao;
-  }
 
   @Override
   public void add(Student student) {
