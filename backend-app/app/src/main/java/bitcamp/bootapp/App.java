@@ -14,12 +14,11 @@ public class App {
   }
 
   // 스프링부트가 클래스를 자동 생성하지 않는다면,
-  // 개발자가 직접 객체를 생성해서 리턴해야한다.
-  // 단, 스프링부트가 아래 메서드를 호출하게 하려면 표시를 해야한다.
+  // 개발자가 직접 객체를 생성해서 리턴해야 한다.
+  // 단, 스프링 부트가 아래 메서드를 호출하게 하려면 표시를 해야 한다.
   @Bean
   public WebMvcConfigurer corsConfigurer() {
     return new WebMvcConfigurer() {
-
       @Override
       public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
@@ -28,8 +27,9 @@ public class App {
       }
     };
   }
-}
 
+
+}
 
 
 

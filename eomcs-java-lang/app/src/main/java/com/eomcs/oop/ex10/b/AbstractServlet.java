@@ -6,21 +6,15 @@ package com.eomcs.oop.ex10.b;
 //    서브 클래스에서 오버라이딩할 메서드를 제외한 나머지 메서드를 추상 클래스에서 구현한다.
 //
 public abstract class AbstractServlet implements Servlet {
-
+  
   // 추상 클래스에서 특정 메서드를 제외한 나머지 메서드를 구현한다.
   // => 이 추상 클래스를 상속 받는 서브 클래스에서는 단 한 개의 메서드만 구현하면 된다.
-  @Override
   public void init() {}
-  @Override
   public void destroy() {}
-  @Override
   public String getServletInfo() {
     return null;
   }
-  @Override
   public String getServletConfig() {
     return null;
   }
 }
-
-

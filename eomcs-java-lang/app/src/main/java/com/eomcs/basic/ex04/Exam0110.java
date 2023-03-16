@@ -22,15 +22,11 @@ public class Exam0110 {
     System.out.println(list.get(2));
 
     System.out.println(list.size());
-    print(list);
-    System.out.println("----------------------------");
+
     System.out.println(list.remove(1)); // aaa, ccc,
-    System.out.println("----------------------------");
     print(list);
-    System.out.println("----------------------------");
+
     list.add(s4); // aaa, ccc, ddd
-    print(list);
-    System.out.println("----------------------------");
     list.add(1, s5); // aaa, eee, ccc, ddd
     print(list);
 

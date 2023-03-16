@@ -31,9 +31,6 @@ public class Exam0310 {
     for (Object key : keys) {
       System.out.println(key);
     }
-    System.out.println(map.keySet());
-
-
   }
 
 }

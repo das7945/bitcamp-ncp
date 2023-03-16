@@ -19,8 +19,6 @@ public class Exam0111 {
     vehicle.model = "티코";
     vehicle.capacity = 5;
 
-
-
     // 왜?
     // => Bike 인스턴스에는 수퍼 클래스인 Vehicle의 인스턴스 변수가 있기 때문.
   }

@@ -22,8 +22,7 @@ public class Exam0220 {
     for (Member value : values) {
       System.out.println(value);
     }
-    System.out.println("---------------------------");
-    System.out.println(values);
+
   }
 
 }

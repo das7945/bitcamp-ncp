@@ -1,7 +1,5 @@
 package com.eomcs.net;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,46 +8,37 @@ import java.util.Scanner;
 public class ServerApp {
 
   public static void main(String[] args) throws Exception {
-    //    Scanner keyScan = new Scanner(System.in);
+    Scanner keyScan = new Scanner(System.in);
 
-    try(ServerSocket serverSocket = new ServerSocket(8888);) {
-      System.out.println("서버 실행 중...");
+    System.out.println("서버 실행 중...");
 
+    ServerSocket serverSocket = new ServerSocket(8888);
 
-      try(
-          Socket socket = serverSocket.accept();
-          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-          PrintStream out = new PrintStream(socket.getOutputStream());
-          ) {
+    Socket socket = serverSocket.accept();
+    System.out.println("클라이언트와 연결됨!");
 
-        System.out.println("계산기");
-        System.out.println("계산기");
-        System.out.println("계산기");
+    Scanner in = new Scanner(socket.getInputStream());
+    PrintStream out = new PrintStream(socket.getOutputStream());
 
-
-
-        while (true) {
-          String message = in.readLine();
-          System.out.println(message);
-          if (message.equals("quit")) {
-            break;
-          }
-
-          System.out.print("입력> ");
-          //      String str = keyScan.nextLine();
-          //      out.println(str);
-        }
+    while (true) {
+      // 클라이언트가 보낸 문자열을 한 줄 읽을 때까지 리턴하지 않는다.
+      String message = in.nextLine();
+      System.out.println(message);
+      if (message.equals("quit")) {
+        break;
       }
-    } catch (Exception e) {
-      e.printStackTrace();
+
+      System.out.print("입력> ");
+      String str = keyScan.nextLine();
+      out.println(str);
     }
+
+
+    socket.close();
+    serverSocket.close();
+
+    System.out.println("서버 종료!");
+    keyScan.close();
   }
-
-  //  socket.close();
-  //  serverSocket.close();
-
-  //      System.out.println("서버 종료!");
-  //      keyScan.close();
-}
 
 }

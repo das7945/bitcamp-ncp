@@ -63,6 +63,5 @@ public class Exam0220 {
       Member m = (Member) obj;
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);
     }
-    System.out.println(list.toArray());
   }
 }

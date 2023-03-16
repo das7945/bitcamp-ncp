@@ -21,10 +21,6 @@ public class CalculatorServer {
 
         while (true) {
           String request = in.readLine();
-          if(request.equals("quit")) {
-            System.out.println("종료");
-            break;
-          }
           String message = compute(request);
           sendResponse(out, message); // 클라리언트에게 응답한다.
         }

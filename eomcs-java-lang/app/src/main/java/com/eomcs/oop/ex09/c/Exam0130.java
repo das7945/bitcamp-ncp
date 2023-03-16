@@ -29,7 +29,7 @@ public class Exam0130 {
 
     // ProtocolA, ProtocolB 규칙 동시 준수!
     @Override
-    public void rule0() {System.out.println("rule0()");}
+    public void rule0() {System.out.println("rule1()");}
 
     // ProtocolA 규칙 준수!
     @Override

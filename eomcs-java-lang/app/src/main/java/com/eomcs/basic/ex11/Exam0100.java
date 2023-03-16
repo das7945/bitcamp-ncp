@@ -1,33 +1,18 @@
 package com.eomcs.basic.ex11;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Exam0100 {
 
   public static void main(String[] args) {
-    //1) 패턴정의
-    Pattern pattern = Pattern.compile("[0-9]+", Pattern.CASE_INSENSITIVE);
-
-    //2) 패턴에 따라 콘텐트를 검사할 도구 준비
-    Matcher matcher = pattern.matcher("123+2*98-24/19");
-
-    //3) 패턴의 결과를 담을 컬렉션 준비
-    ArrayList<String> items = new ArrayList<>();
-
-    //4)패턴 검사
-    while (matcher.find()) {
-      //5) 패턴과 일치하는 항목을 추출하여 컬렉션에 담기
-      items.add(matcher.group());
+    Pattern pattern = Pattern.compile("bit", Pattern.CASE_INSENSITIVE);
+    Matcher matcher = pattern.matcher("theBitCamp");
+    if (matcher.find()) {
+      System.out.println("찾았다!");
+    } else {
+      System.out.println("못찾았다!");
     }
-
-    System.out.println("-------------------------");
-
-    for (String item : items) {
-      System.out.println(item);
-    }
-
   }
 
 }

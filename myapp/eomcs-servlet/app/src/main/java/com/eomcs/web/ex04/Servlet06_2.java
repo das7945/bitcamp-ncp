@@ -36,8 +36,6 @@ public class Servlet06_2 extends GenericServlet {
     res.setContentType("text/plain;charset=UTF-8");
     PrintWriter out = res.getWriter();
     out.println("선택한 장르:");
-    out.println(genres);
-
     for (String genre : genres) {
       out.println(genreData[Integer.parseInt(genre)]);
     }

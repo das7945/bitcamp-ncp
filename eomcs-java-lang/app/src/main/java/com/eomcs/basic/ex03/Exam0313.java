@@ -65,8 +65,6 @@ public class Exam0313 {
     list.add(m2);
     list.add(m3);
 
-   
-
     Member[] arr = list.toArray(new Member[list.size()]);
 
     for (Member m : arr) {

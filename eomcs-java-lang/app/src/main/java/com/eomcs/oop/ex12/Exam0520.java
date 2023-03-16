@@ -38,7 +38,6 @@ public class Exam0520 {
     Calculator c03 = MyCalculator::multiple;
     Calculator c04 = MyCalculator::divide;
     // Calculator c05 = MyCalculator::power; // 해당 메서드를 가지고 구현체를 만들 수 없다.
-    // 파라미터와 아규먼트의 타입과 갯수가 일치해야함.
 
     // 위의 코드는 내부적으로 다음과 같다.
     //

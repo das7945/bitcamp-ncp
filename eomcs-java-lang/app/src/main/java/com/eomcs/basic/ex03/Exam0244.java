@@ -50,9 +50,6 @@ public class Exam0244 {
     list.add(m2);
     list.add(m3);
 
-
-
-    list.forEach(m -> System.out.printf("이름: %s, 나이: %d\n", m.name, m.age));
     // 메서드 레퍼런스로 인터페이스 구현체 전달하기
     list.forEach(Exam0244::printMember);
   }

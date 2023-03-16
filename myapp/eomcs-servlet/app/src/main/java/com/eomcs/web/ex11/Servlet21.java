@@ -29,7 +29,7 @@ public class Servlet21 extends HttpServlet {
     //    카운트를 0부터 다시 시작한다.
     // => 예) 인터넷 뱅킹 에서 보통 세션 타임아웃을 10분으로 설정한다.
     //        클라이언트가 어떤 링크를 누르면 카운트는 다시 10분으로 초기화된다.
-    session.setMaxInactiveInterval(10);
+    session.setMaxInactiveInterval(1000);
 
     session.setAttribute("v1", "aaa");
 

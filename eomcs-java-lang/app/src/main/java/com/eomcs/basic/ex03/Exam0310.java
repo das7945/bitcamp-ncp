@@ -45,6 +45,5 @@ public class Exam0310 {
       Member m = (Member) list.get(i);
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);
     }
-    System.out.println(list.size());
   }
 }

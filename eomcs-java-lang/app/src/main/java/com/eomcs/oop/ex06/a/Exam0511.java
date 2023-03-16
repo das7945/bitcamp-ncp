@@ -14,8 +14,6 @@ public class Exam0511 {
     // => 클래스 정보를 갖고 있는 스태틱 변수이다.
     //
     System.out.println(v.getClass() == Sedan.class);
-
-
     System.out.println(v.getClass() == Car.class);
     System.out.println(v.getClass() == Vehicle.class);
     System.out.println(v.getClass() == Truck.class);

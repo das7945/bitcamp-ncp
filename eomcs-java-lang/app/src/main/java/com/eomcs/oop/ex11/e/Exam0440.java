@@ -39,31 +39,5 @@ public class Exam0440 {
       }
     });
 
-
-    // 단계별 진화
-    class Y implements A {
-      @Override
-      public void print() {
-        System.out.println("하하하");
-      }
-    }
-    m1(new Y());
-
-
-    A a = new A() {
-      @Override
-      public void print() {
-        System.out.println("하하하");
-      }
-    };
-    m1(a);
-
-    m1(new A() {
-      @Override
-      public void print() {
-        System.out.println("하하하");
-      }
-    });
-
   }
 }

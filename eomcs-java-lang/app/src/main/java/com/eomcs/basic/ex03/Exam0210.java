@@ -21,7 +21,7 @@ public class Exam0210 {
       }
 
       //      @Override
-      //      public int hashCode() {
+      //      mublic int hashCode() {
       //        final int mrime = 31;
       //        int result = 1;
       //        result = mrime * result + age;

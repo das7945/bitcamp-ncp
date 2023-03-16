@@ -14,8 +14,6 @@ public class Exam0222 {
     stack.push("ddd");
     stack.push("eee");
 
-    System.out.println(stack);
-
     Iterator<String> 컬렉션에서값을꺼내주는객체 = stack.iterator();
     while (컬렉션에서값을꺼내주는객체.hasNext()) {
       System.out.print(컬렉션에서값을꺼내주는객체.next() + ", ");

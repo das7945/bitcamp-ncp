@@ -19,7 +19,7 @@ class Parent {
 }
 
 class MyInterface5Impl extends Parent implements MyInterface5 {
-  // interface는 extends와 같이 기능은 비슷해 보일 수 있지만 전혀 다른 개념이며 수퍼클래스가 아니다.
+
 }
 
 public class Exam05 {
@@ -32,13 +32,13 @@ public class Exam05 {
 
     MyInterface5Impl obj = new MyInterface5Impl();
 
-    // 수퍼 클래스에 정의된 static 메서드는,
+    // 수퍼 클래스에 정의된 static 메서드는,    
     // => 다음과 같이 서브 클래스를 통해 호출할 수 있다.
     MyInterface5Impl.m2();
 
     // => 또는 다음과 같이 인스턴스 레퍼런스를 통해 호출할 수 있다.
     // => 물론 스태틱 메서드는 가능한 그 메서드가 선언된 클래스 이름으로 호출하는 것이 좋다.
-    obj.m2();
+    obj.m2(); 
 
     // 그러나, 인터페이스에 정의된 static 메서드는,
     // => 인터페이스를 구현한 클래스를 통해 호출할 수 없다.
