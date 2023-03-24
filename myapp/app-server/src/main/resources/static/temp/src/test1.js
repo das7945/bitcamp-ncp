@@ -1,36 +1,23 @@
 "use strict";
 
-// State 끌어 올리기 - 여러 컴포넌트에서 데이터를 공유하는 방법
+// 다른 컴포넌트 담기
 
-function BoilingVerdict(props) {
-  if (props.celsius >= 100) {
-    return <p>The water would boil.</p>;
-  }
-  return <p>The water would not boil.</p>;
+function FancyBorder(props) {
+  return (
+    <div className={"FancyBorder FancyBorder-" + props.color}>
+      {props.children}
+    </div>
+  );
 }
 
-class Calculator extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { temperature: "" };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ temperature: event.target.value });
-  }
-
-  render() {
-    const temperature = this.state.temperature;
-    return (
-      <fieldset>
-        <legend>섭씨 온도:</legend>
-        <input type="number" value={temperature} onChange={this.handleChange} />
-        <BoilingVerdict celsius={parseFloat(temperature)} />
-      </fieldset>
-    );
-  }
+function WelcomeDialog() {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">Welcome</h1>
+      <p className="Dialog-message">Thank you for visiting our spacecraft!</p>
+    </FancyBorder>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Calculator />);
+root.render(<WelcomeDialog />);
