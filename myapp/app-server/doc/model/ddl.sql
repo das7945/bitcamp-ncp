@@ -19,13 +19,13 @@ DROP TABLE IF EXISTS lms_member RESTRICT;
 -- 교육센터
 DROP TABLE IF EXISTS lms_edu_center RESTRICT;
 
--- 부서명
+-- 부서
 DROP TABLE IF EXISTS lms_department RESTRICT;
 
 -- 학력
 DROP TABLE IF EXISTS lms_degree RESTRICT;
 
--- 강의실 사진
+-- 강의실사진
 DROP TABLE IF EXISTS lms_class_photo RESTRICT;
 
 -- 기본주소
@@ -48,7 +48,7 @@ CREATE TABLE lms_lecture (
   start_dt   DATE         NOT NULL COMMENT '시작일', -- 시작일
   end_dt     DATE         NOT NULL COMMENT '종료일', -- 종료일
   price      INTEGER      NOT NULL COMMENT '강의료', -- 강의료
-  hours      INTEGER      NOT NULL COMMENT '총 강의시간', -- 총 강의시간
+  hours      INTEGER      NOT NULL COMMENT '총강의시간', -- 총강의시간
   capacity   INTEGER      NOT NULL COMMENT '모집인원', -- 모집인원
   manager_id INTEGER      NULL     COMMENT '매니저번호', -- 매니저번호
   class_id   INTEGER      NULL     COMMENT '강의실번호' -- 강의실번호
@@ -106,7 +106,7 @@ CREATE TABLE lms_manager (
   manager_id    INTEGER     NOT NULL COMMENT '매니저번호', -- 매니저번호
   department_id INTEGER     NOT NULL COMMENT '부서번호', -- 부서번호
   fax           VARCHAR(30) NULL     COMMENT '팩스', -- 팩스
-  position      VARCHAR(50) NULL     COMMENT '직위' -- 직위
+  position      VARCHAR(60) NULL     COMMENT '직위' -- 직위
 )
 COMMENT '매니저';
 
@@ -120,8 +120,8 @@ ALTER TABLE lms_manager
 -- 강의실
 CREATE TABLE lms_class (
   class_id      INTEGER     NOT NULL COMMENT '강의실번호', -- 강의실번호
-  edu_center_id INTEGER     NOT NULL COMMENT '교육 센터번호', -- 교육 센터번호
-  name          VARCHAR(50) NOT NULL COMMENT '강의실명', -- 강의실명
+  edu_center_id INTEGER     NOT NULL COMMENT '교육센터번호', -- 교육센터번호
+  name          VARCHAR(60) NOT NULL COMMENT '강의실명', -- 강의실명
   capacity      INTEGER     NOT NULL COMMENT '수용인원' -- 수용인원
 )
 COMMENT '강의실';
@@ -145,14 +145,14 @@ ALTER TABLE lms_class
 -- 회원
 CREATE TABLE lms_member (
   member_id      INTEGER      NOT NULL COMMENT '회원번호', -- 회원번호
-  name           VARCHAR(50)  NOT NULL COMMENT '이름', -- 이름
+  name           VARCHAR(60)  NOT NULL COMMENT '이름', -- 이름
   tel            VARCHAR(30)  NOT NULL COMMENT '전화', -- 전화
   email          VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
   addr_id        INTEGER      NULL     COMMENT '기본주소번호', -- 기본주소번호
   detail_address VARCHAR(255) NULL     COMMENT '상세주소', -- 상세주소
   degree_id      INTEGER      NOT NULL COMMENT '학력번호', -- 학력번호
-  school         VARCHAR(50)  NULL     COMMENT '학교', -- 학교
-  major          VARCHAR(50)  NOT NULL COMMENT '전공' -- 전공
+  school         VARCHAR(60)  NULL     COMMENT '학교', -- 학교
+  major          VARCHAR(60)  NOT NULL COMMENT '전공' -- 전공
 )
 COMMENT '회원';
 
@@ -181,11 +181,11 @@ ALTER TABLE lms_member
 -- 교육센터
 CREATE TABLE lms_edu_center (
   edu_center_id  INTEGER      NOT NULL COMMENT '교육센터번호', -- 교육센터번호
-  name           VARCHAR(50)  NOT NULL COMMENT '센터명', -- 센터명
+  name           VARCHAR(60)  NOT NULL COMMENT '센터명', -- 센터명
   addr_id        INTEGER      NOT NULL COMMENT '기본주소번호', -- 기본주소번호
-  detail_address VARCHAR(255) NOT NULL COMMENT '센터 상세주소', -- 센터 상세주소
-  tel            VARCHAR(30)  NOT NULL COMMENT '센터 전화', -- 센터 전화
-  fax            VARCHAR(30)  NULL     COMMENT '센터 팩스' -- 센터 팩스
+  detail_address VARCHAR(255) NOT NULL COMMENT '센터상세주소', -- 센터상세주소
+  tel            VARCHAR(30)  NOT NULL COMMENT '센터전화', -- 센터전화
+  fax            VARCHAR(30)  NULL     COMMENT '센터팩스' -- 센터팩스
 )
 COMMENT '교육센터';
 
@@ -205,23 +205,23 @@ CREATE UNIQUE INDEX UIX_lms_edu_center
 ALTER TABLE lms_edu_center
   MODIFY COLUMN edu_center_id INTEGER NOT NULL AUTO_INCREMENT COMMENT '교육센터번호';
 
--- 부서명
+-- 부서
 CREATE TABLE lms_department (
   department_id INTEGER     NOT NULL COMMENT '부서번호', -- 부서번호
-  dept_name     VARCHAR(50) NOT NULL COMMENT '부서명' -- 부서명
+  dept_name     VARCHAR(60) NOT NULL COMMENT '부서명' -- 부서명
 )
-COMMENT '부서명';
+COMMENT '부서';
 
--- 부서명
+-- 부서
 ALTER TABLE lms_department
-  ADD CONSTRAINT PK_lms_department -- 부서명 기본키
+  ADD CONSTRAINT PK_lms_department -- 부서 기본키
   PRIMARY KEY (
   department_id -- 부서번호
   );
 
--- 부서명 유니크 인덱스
+-- 부서 유니크 인덱스
 CREATE UNIQUE INDEX UIX_lms_department
-  ON lms_department ( -- 부서명
+  ON lms_department ( -- 부서
     dept_name ASC -- 부서명
   );
 
@@ -231,7 +231,7 @@ ALTER TABLE lms_department
 -- 학력
 CREATE TABLE lms_degree (
   degree_id INTEGER     NOT NULL COMMENT '학력번호', -- 학력번호
-  degr_name VARCHAR(50) NOT NULL COMMENT '최종학력' -- 최종학력
+  degr_name VARCHAR(60) NOT NULL COMMENT '최종학력' -- 최종학력
 )
 COMMENT '학력';
 
@@ -251,25 +251,25 @@ CREATE UNIQUE INDEX UIX_lms_degree
 ALTER TABLE lms_degree
   MODIFY COLUMN degree_id INTEGER NOT NULL AUTO_INCREMENT COMMENT '학력번호';
 
--- 강의실 사진
+-- 강의실사진
 CREATE TABLE lms_class_photo (
-  class_photo_id  INTEGER      NOT NULL COMMENT '강의실 사진번호', -- 강의실 사진번호
+  class_photo_id  INTEGER      NOT NULL COMMENT '강의실사진번호', -- 강의실사진번호
   photo_path      VARCHAR(255) NOT NULL COMMENT '사진', -- 사진
-  origin_filename VARCHAR(50)  NOT NULL COMMENT '원래 사진파일명', -- 원래 사진파일명
-  mimetype        VARCHAR(50)  NOT NULL COMMENT 'MIMETYPE', -- MIMETYPE
+  origin_filename VARCHAR(60)  NOT NULL COMMENT '원래사진파일명', -- 원래사진파일명
+  mimetype        VARCHAR(60)  NOT NULL COMMENT 'MIMETYPE', -- MIMETYPE
   class_id        INTEGER      NOT NULL COMMENT '강의실번호' -- 강의실번호
 )
-COMMENT '강의실 사진';
+COMMENT '강의실사진';
 
--- 강의실 사진
+-- 강의실사진
 ALTER TABLE lms_class_photo
-  ADD CONSTRAINT PK_lms_class_photo -- 강의실 사진 기본키
+  ADD CONSTRAINT PK_lms_class_photo -- 강의실사진 기본키
   PRIMARY KEY (
-  class_photo_id -- 강의실 사진번호
+  class_photo_id -- 강의실사진번호
   );
 
 ALTER TABLE lms_class_photo
-  MODIFY COLUMN class_photo_id INTEGER NOT NULL AUTO_INCREMENT COMMENT '강의실 사진번호';
+  MODIFY COLUMN class_photo_id INTEGER NOT NULL AUTO_INCREMENT COMMENT '강의실사진번호';
 
 -- 기본주소
 CREATE TABLE lms_addr (
@@ -297,8 +297,8 @@ ALTER TABLE lms_addr
 
 -- 수강신청
 CREATE TABLE lms_application (
-  student_id           INTEGER     NOT NULL COMMENT '학생번호', -- 학생번호
   lecture_id           INTEGER     NOT NULL COMMENT '강의번호', -- 강의번호
+  student_id           INTEGER     NOT NULL COMMENT '학생번호', -- 학생번호
   created_dt           DATETIME    NOT NULL DEFAULT now() COMMENT '신청일', -- 신청일
   application_state_id VARCHAR(10) NULL     COMMENT '신청상태번호' -- 신청상태번호
 )
@@ -308,8 +308,8 @@ COMMENT '수강신청';
 ALTER TABLE lms_application
   ADD CONSTRAINT PK_lms_application -- 수강신청 기본키
   PRIMARY KEY (
-  student_id, -- 학생번호
-  lecture_id  -- 강의번호
+  lecture_id, -- 강의번호
+  student_id  -- 학생번호
   );
 
 -- 강의배정
@@ -330,7 +330,7 @@ ALTER TABLE lms_lecture_teacher
 -- 신청상태
 CREATE TABLE lms_application_state (
   application_state_id VARCHAR(10) NOT NULL COMMENT '신청상태번호', -- 신청상태번호
-  status_name          VARCHAR(50) NULL     COMMENT '상태명' -- 상태명
+  status_name          VARCHAR(60) NULL     COMMENT '상태명' -- 상태명
 )
 COMMENT '신청상태';
 
@@ -393,11 +393,11 @@ ALTER TABLE lms_manager
 
 -- 매니저
 ALTER TABLE lms_manager
-  ADD CONSTRAINT FK_lms_department_TO_lms_manager -- 부서명 -> 매니저
+  ADD CONSTRAINT FK_lms_department_TO_lms_manager -- 부서 -> 매니저
   FOREIGN KEY (
   department_id -- 부서번호
   )
-  REFERENCES lms_department ( -- 부서명
+  REFERENCES lms_department ( -- 부서
   department_id -- 부서번호
   );
 
@@ -405,7 +405,7 @@ ALTER TABLE lms_manager
 ALTER TABLE lms_class
   ADD CONSTRAINT FK_lms_edu_center_TO_lms_class -- 교육센터 -> 강의실
   FOREIGN KEY (
-  edu_center_id -- 교육 센터번호
+  edu_center_id -- 교육센터번호
   )
   REFERENCES lms_edu_center ( -- 교육센터
   edu_center_id -- 교육센터번호
@@ -441,24 +441,14 @@ ALTER TABLE lms_edu_center
   addr_id -- 기본주소번호
   );
 
--- 강의실 사진
+-- 강의실사진
 ALTER TABLE lms_class_photo
-  ADD CONSTRAINT FK_lms_class_TO_lms_class_photo -- 강의실 -> 강의실 사진
+  ADD CONSTRAINT FK_lms_class_TO_lms_class_photo -- 강의실 -> 강의실사진
   FOREIGN KEY (
   class_id -- 강의실번호
   )
   REFERENCES lms_class ( -- 강의실
   class_id -- 강의실번호
-  );
-
--- 수강신청
-ALTER TABLE lms_application
-  ADD CONSTRAINT FK_lms_student_TO_lms_application -- 학생 -> 수강신청
-  FOREIGN KEY (
-  student_id -- 학생번호
-  )
-  REFERENCES lms_student ( -- 학생
-  student_id -- 학생번호
   );
 
 -- 수강신청
@@ -469,6 +459,16 @@ ALTER TABLE lms_application
   )
   REFERENCES lms_lecture ( -- 강의
   lecture_id -- 강의번호
+  );
+
+-- 수강신청
+ALTER TABLE lms_application
+  ADD CONSTRAINT FK_lms_student_TO_lms_application -- 학생 -> 수강신청
+  FOREIGN KEY (
+  student_id -- 학생번호
+  )
+  REFERENCES lms_student ( -- 학생
+  student_id -- 학생번호
   );
 
 -- 수강신청
